@@ -12,11 +12,9 @@ import { cn } from "@/lib/utils";
 
 function Logo() {
   return (
-    <Link href="/" className="focus-ring flex items-center gap-2 rounded-md" aria-label={`${SITE_NAME} home`}>
-      <span className="flex h-9 w-9 items-center justify-center rounded-md bg-white shadow-[inset_0_0_0_1px_rgba(10,11,13,0.08)]">
-        <Image src="/logo_l6diqm.jpg" alt="" width={28} height={28} className="rounded-sm" priority />
-      </span>
-      <span className="text-lg font-bold tracking-tight text-ink">Altiora</span>
+    <Link href="/" className="focus-ring flex items-center gap-3 rounded-md" aria-label={`${SITE_NAME} home`}>
+      <Image src="/altiora-logo.png" alt="" width={32} height={32} priority />
+      <span className="text-lg font-black tracking-tight text-ink font-mono">Altiora</span>
     </Link>
   );
 }
@@ -35,8 +33,8 @@ export function HomeHeader() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 border-b border-transparent bg-white/90 backdrop-blur transition-shadow duration-200",
-        isScrolled && "border-ink/10 shadow-[0_1px_0_rgba(0,0,0,0.02),0_8px_24px_-16px_rgba(0,0,0,0.15)]"
+        "sticky top-0 z-50 border-b border-ink/8 bg-white/90 backdrop-blur-xl transition-all duration-300",
+        isScrolled && "border-ink/12 bg-white/95 shadow-[0_8px_30px_rgba(20,21,26,0.06)]"
       )}
     >
       <Container className="flex h-16 items-center justify-between sm:h-[72px]">
@@ -47,7 +45,7 @@ export function HomeHeader() {
             <Link
               key={link.href}
               href={link.href}
-              className="focus-ring rounded-md text-sm font-medium text-muted transition-colors hover:text-ink"
+              className="focus-ring rounded-md text-xs font-bold uppercase tracking-wider text-muted transition-colors hover:text-blue-600"
             >
               {link.label}
             </Link>
@@ -55,7 +53,7 @@ export function HomeHeader() {
         </nav>
 
         <div className="hidden lg:block">
-          <Button href={PRIMARY_CTA.href} showArrow={false} className="px-5 py-2.5">
+          <Button href={PRIMARY_CTA.href} showArrow={false} className="px-5 py-2.5 text-xs">
             {PRIMARY_CTA.label}
           </Button>
         </div>
@@ -71,11 +69,11 @@ export function HomeHeader() {
             </button>
           </Dialog.Trigger>
           <Dialog.Portal>
-            <Dialog.Overlay className="fixed inset-0 z-50 bg-black/50 data-[state=open]:animate-in data-[state=open]:fade-in" />
-            <Dialog.Content className="fixed inset-y-0 right-0 z-50 flex w-full max-w-xs flex-col bg-white p-6 shadow-xl focus:outline-none">
+            <Dialog.Overlay className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in" />
+            <Dialog.Content className="fixed inset-y-0 right-0 z-50 flex w-full max-w-xs flex-col bg-white border-l border-ink/10 p-6 shadow-2xl focus:outline-none">
               <div className="flex items-center justify-between">
                 <Dialog.Title asChild>
-                  <span className="text-lg font-bold text-ink">Menu</span>
+                  <span className="text-lg font-bold text-ink font-mono">Menu</span>
                 </Dialog.Title>
                 <Dialog.Close asChild>
                   <button
@@ -88,13 +86,13 @@ export function HomeHeader() {
                 </Dialog.Close>
               </div>
 
-              <nav aria-label="Mobile" className="mt-8 flex flex-col gap-1">
+              <nav aria-label="Mobile" className="mt-8 flex flex-col gap-2">
                 {NAV_LINKS.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="focus-ring rounded-md px-2 py-3 text-base font-medium text-ink transition-colors hover:bg-surface"
+                    className="focus-ring rounded-lg px-3 py-3 text-sm font-bold uppercase tracking-wider text-ink transition-colors hover:bg-surface hover:text-blue-600"
                   >
                     {link.label}
                   </Link>

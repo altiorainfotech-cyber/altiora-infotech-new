@@ -4,7 +4,7 @@
   --background: #ffffff;
   --foreground: #14151a;
 
-  /* Neutral surfaces */
+  /* Neutral surfaces - Premium Light Palette */
   --color-black: #0a0b0d;
   --color-black-soft: #15161c;
   --color-ink: #14151a;
@@ -78,15 +78,25 @@
   --color-blue-900: var(--color-blue-900);
 
   --animate-fade-up: fade-up 0.6s ease forwards;
+  --animate-marquee: marquee 28s linear infinite;
 
   @keyframes fade-up {
     from {
       opacity: 0;
-      transform: translateY(16px);
+      transform: translateY(20px);
     }
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
     }
   }
 }
@@ -95,6 +105,55 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism & Cyber-Executive Light Theme Styling */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(20, 21, 26, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(20, 21, 26, 0.08);
+}
+
+.glass-panel-gold {
+  background: rgba(251, 246, 233, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(211, 172, 60, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(211, 172, 60, 0.15);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #14151a 0%, #a6821c 60%, #c9a227 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-blue-gradient {
+  background: linear-gradient(135deg, #14151a 0%, #163f85 60%, #3d72c9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-glow {
+  box-shadow: 0 0 25px rgba(211, 172, 60, 0.2);
+}
+
+.blue-glow {
+  box-shadow: 0 0 25px rgba(61, 114, 201, 0.2);
+}
+
+.bg-blue-gradient {
+  background: linear-gradient(135deg, #163f85 0%, #1c4fa1 50%, #3d72c9 100%);
+}
+
+.icon-box-blue {
+  background: linear-gradient(135deg, #163f85 0%, #1c4fa1 100%);
+  color: #ffffff;
+  border: 1px solid rgba(160, 192, 234, 0.35);
+  box-shadow: 0 4px 14px rgba(22, 63, 133, 0.25);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -113,7 +172,7 @@ body {
 }
 
 .focus-ring:focus-visible {
-  outline: 2px solid var(--color-blue-500);
+  outline: 2px solid var(--color-gold-500);
   outline-offset: 3px;
   border-radius: 4px;
 }

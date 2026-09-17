@@ -7,7 +7,7 @@ type Variant = "primary" | "secondary" | "secondary-inverted";
 
 const variantStyles: Record<Variant, string> = {
   primary:
-    "bg-blue-500 text-white hover:bg-blue-600 hover:-translate-y-0.5 shadow-[0_8px_24px_-8px_rgba(28,79,161,0.45)]",
+    "bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white hover:from-blue-700 hover:to-blue-900 hover:-translate-y-0.5 shadow-[0_6px_20px_rgba(22,63,133,0.35)] font-bold",
   secondary:
     "border border-ink/15 text-ink hover:border-blue-500/50 hover:text-blue-600",
   "secondary-inverted":

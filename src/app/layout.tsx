@@ -23,8 +23,8 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: "/logo_l6diqm.jpg",
-    apple: "/logo_l6diqm.jpg",
+    icon: "/altiora-logo.png",
+    apple: "/altiora-logo.png",
   },
   openGraph: {
     type: "website",

@@ -17,10 +17,10 @@ function Node({
     <div
       className={
         tone === "strategy"
-          ? "rounded-lg border border-ink/15 bg-ink px-6 py-3 text-sm font-semibold tracking-wide text-white"
+          ? "rounded-xl border border-gold-400/40 bg-gold-500 px-6 py-3 text-sm font-bold tracking-wide text-white shadow-md"
           : tone === "growth"
-            ? "rounded-lg bg-gold-500 px-6 py-3 text-sm font-semibold tracking-wide text-black"
-            : "rounded-lg border border-ink/12 bg-white px-6 py-3 text-sm font-semibold tracking-wide text-ink shadow-[0_4px_16px_-8px_rgba(10,11,13,0.12)]"
+            ? "rounded-xl bg-ink px-6 py-3 text-sm font-extrabold tracking-wide text-white shadow-lg"
+            : "rounded-xl border border-ink/10 bg-white px-6 py-3 text-sm font-semibold tracking-wide text-ink shadow-sm backdrop-blur-md hover:border-ink/20 transition-colors"
       }
     >
       {label}
@@ -41,7 +41,7 @@ function DrawLine({ d, viewBox, className }: { d: string; viewBox: string; class
       <motion.path
         d={d}
         stroke="url(#ecosystem-line)"
-        strokeWidth="1.5"
+        strokeWidth="2"
         strokeLinecap="round"
         initial={prefersReducedMotion ? undefined : { pathLength: 0 }}
         whileInView={prefersReducedMotion ? undefined : { pathLength: 1 }}
@@ -58,7 +58,7 @@ export function ServiceEcosystem() {
   const [website, conversions, growth] = rest.slice(3);
 
   return (
-    <section className="bg-white py-16 sm:py-20 lg:py-24" aria-labelledby="ecosystem-heading">
+    <section className="relative overflow-hidden bg-transparent py-16 sm:py-20 lg:py-24" aria-labelledby="ecosystem-heading">
       <Container>
         <SectionHeading
           headingId="ecosystem-heading"
@@ -67,6 +67,7 @@ export function ServiceEcosystem() {
           title={ecosystem.heading}
           description={ecosystem.description}
           className="mx-auto"
+          tone="light"
         />
 
         <Reveal className="mx-auto mt-14 max-w-2xl">

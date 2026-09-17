@@ -84,9 +84,9 @@ export const quickAnswer = {
 };
 
 export const growthMetrics = [
-  { value: "80+", label: "Clients Served" },
-  { value: "$5M+", label: "Revenue Generated" },
-  { value: "12+", label: "Industries Covered" },
+  { value: "80+", label: "Clients Served", icon: Users },
+  { value: "$5M+", label: "Revenue Generated", icon: TrendingUp },
+  { value: "12+", label: "Industries Covered", icon: Building2 },
 ];
 
 export type Service = {
