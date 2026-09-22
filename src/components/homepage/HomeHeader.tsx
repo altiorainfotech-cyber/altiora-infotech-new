@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import * as Dialog from "@radix-ui/react-dialog";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { ServicesMenu } from "./ServicesMenu";
 import { NAV_LINKS, PRIMARY_CTA, SITE_NAME } from "@/lib/constants";
+import { services } from "@/data/homepage";
 import { cn } from "@/lib/utils";
 
 function Logo() {
@@ -22,6 +24,7 @@ function Logo() {
 export function HomeHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 8);
@@ -41,15 +44,19 @@ export function HomeHeader() {
         <Logo />
 
         <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="focus-ring rounded-md text-xs font-bold uppercase tracking-wider text-muted transition-colors hover:text-blue-600"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map((link) =>
+            link.label === "Services" ? (
+              <ServicesMenu key={link.href} href={link.href} label={link.label} />
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="focus-ring rounded-md text-xs font-bold uppercase tracking-wider text-muted transition-colors hover:text-blue-600"
+              >
+                {link.label}
+              </Link>
+            )
+          )}
         </nav>
 
         <div className="hidden lg:block">
@@ -86,17 +93,58 @@ export function HomeHeader() {
                 </Dialog.Close>
               </div>
 
-              <nav aria-label="Mobile" className="mt-8 flex flex-col gap-2">
-                {NAV_LINKS.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="focus-ring rounded-lg px-3 py-3 text-sm font-bold uppercase tracking-wider text-ink transition-colors hover:bg-surface hover:text-blue-600"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+              <nav aria-label="Mobile" className="mt-8 flex flex-col gap-2 overflow-y-auto">
+                {NAV_LINKS.map((link) =>
+                  link.label === "Services" ? (
+                    <div key={link.href}>
+                      <div className="flex items-center justify-between rounded-lg px-3 py-1">
+                        <Link
+                          href={link.href}
+                          onClick={() => setMobileOpen(false)}
+                          className="focus-ring flex-1 rounded-lg py-3 text-sm font-bold uppercase tracking-wider text-ink transition-colors hover:text-blue-600"
+                        >
+                          {link.label}
+                        </Link>
+                        <button
+                          type="button"
+                          onClick={() => setMobileServicesOpen((open) => !open)}
+                          aria-expanded={mobileServicesOpen}
+                          aria-label="Toggle services submenu"
+                          className="focus-ring flex h-9 w-9 items-center justify-center rounded-md text-ink"
+                        >
+                          <ChevronDown
+                            className={cn("h-4 w-4 transition-transform duration-200", mobileServicesOpen && "rotate-180")}
+                            aria-hidden="true"
+                          />
+                        </button>
+                      </div>
+
+                      {mobileServicesOpen && (
+                        <div className="mb-1 flex flex-col gap-0.5 pl-3">
+                          {services.map((service) => (
+                            <Link
+                              key={service.slug}
+                              href={service.href}
+                              onClick={() => setMobileOpen(false)}
+                              className="focus-ring rounded-lg px-3 py-2.5 text-xs font-bold text-muted transition-colors hover:bg-surface hover:text-blue-600"
+                            >
+                              {service.title}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="focus-ring rounded-lg px-3 py-3 text-sm font-bold uppercase tracking-wider text-ink transition-colors hover:bg-surface hover:text-blue-600"
+                    >
+                      {link.label}
+                    </Link>
+                  )
+                )}
               </nav>
 
               <div className="mt-auto pt-8">

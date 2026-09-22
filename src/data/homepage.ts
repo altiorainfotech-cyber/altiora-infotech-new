@@ -102,7 +102,7 @@ export type Service = {
 export const services: Service[] = [
   {
     category: "Performance Media",
-    title: "Paid Advertisement Services",
+    title: "Paid Advertising (PPC)",
     slug: "paid-advertisement-services",
     description:
       "Full-funnel paid media across search, social, and display — built for efficient spend and measurable return.",
@@ -121,18 +121,18 @@ export const services: Service[] = [
     icon: Search,
   },
   {
-    category: "Product",
-    title: "Mobile App Development",
-    slug: "mobile-app-development",
+    category: "Search Visibility",
+    title: "AEO & GEO",
+    slug: "aeo-geo",
     description:
-      "iOS and Android apps engineered for performance, usability, and long-term scalability.",
-    benefits: ["Native & cross-platform builds", "UX-first design", "Ongoing support"],
-    href: "/services/mobile-app-development",
-    icon: Smartphone,
+      "Answer and generative engine optimization built for how AI tools like ChatGPT and Google AI Overviews surface answers.",
+    benefits: ["AI-answer visibility", "Structured data & schema", "Featured snippet targeting"],
+    href: "/services/aeo-geo",
+    icon: Bot,
   },
   {
     category: "Product",
-    title: "Website Development",
+    title: "Website Development Services",
     slug: "website-development",
     description:
       "Fast, conversion-focused websites built on modern architecture with SEO and growth baked in.",
@@ -149,6 +149,16 @@ export const services: Service[] = [
     benefits: ["Content calendars", "Community management", "Platform-specific strategy"],
     href: "/services/social-media-management",
     icon: Share2,
+  },
+  {
+    category: "Social",
+    title: "Influencer & UGC Marketing",
+    slug: "influencer-ugc-marketing",
+    description:
+      "Creator partnerships and authentic user-generated content that build trust at scale.",
+    benefits: ["Creator sourcing & outreach", "UGC content programs", "Campaign management"],
+    href: "/services/influencer-ugc-marketing",
+    icon: Users,
   },
   {
     category: "Creative",
@@ -191,24 +201,14 @@ export const services: Service[] = [
     icon: Briefcase,
   },
   {
-    category: "Social",
-    title: "Influencer & UGC Marketing",
-    slug: "influencer-ugc-marketing",
+    category: "Product",
+    title: "Mobile App Development",
+    slug: "mobile-app-development",
     description:
-      "Creator partnerships and authentic user-generated content that build trust at scale.",
-    benefits: ["Creator sourcing & outreach", "UGC content programs", "Campaign management"],
-    href: "/services/influencer-ugc-marketing",
-    icon: Users,
-  },
-  {
-    category: "Search Visibility",
-    title: "AEO & GEO",
-    slug: "aeo-geo",
-    description:
-      "Answer and generative engine optimization built for how AI tools like ChatGPT and Google AI Overviews surface answers.",
-    benefits: ["AI-answer visibility", "Structured data & schema", "Featured snippet targeting"],
-    href: "/services/aeo-geo",
-    icon: Bot,
+      "iOS and Android apps engineered for performance, usability, and long-term scalability.",
+    benefits: ["Native & cross-platform builds", "UX-first design", "Ongoing support"],
+    href: "/services/mobile-app-development",
+    icon: Smartphone,
   },
 ];
 
