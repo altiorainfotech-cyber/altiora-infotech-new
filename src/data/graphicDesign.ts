@@ -29,20 +29,23 @@ export const graphicDesignHero = {
 
 export type DesignCapability = { label: string; icon: LucideIcon; detail: string };
 
+const capabilities: DesignCapability[] = [
+  { label: "Logo & Brand Identity", icon: Sparkles, detail: "Create a distinctive visual identity for your business" },
+  { label: "Social Media Graphics", icon: ImageIcon, detail: "Design engaging visuals for Instagram, Facebook, LinkedIn, and TikTok" },
+  { label: "Marketing Collateral", icon: FileText, detail: "Create brochures, flyers, presentations, business cards, and more" },
+  { label: "UI/UX Design", icon: LayoutTemplate, detail: "Design intuitive digital experiences for websites and applications" },
+  { label: "Print Design", icon: Printer, detail: "Produce high-quality artwork for professional print materials" },
+  { label: "Packaging Design", icon: Package, detail: "Create packaging that communicates value and attracts customers" },
+];
+
 export const graphicDesignOverview = {
   eyebrow: "Service Overview",
   heading: "What Are Graphic Design Services?",
   p1: "Graphic design services cover branding, social media graphics, marketing materials, UI/UX, print, and packaging design.",
   p2: "At Altiora Infotech, we create strategic visuals that keep your brand consistent, professional, and memorable across every touchpoint.",
   coverHeading: "We Design",
-  capabilities: [
-    { label: "Logo & Brand Identity", icon: Sparkles, detail: "Create a distinctive visual identity for your business" },
-    { label: "Social Media Graphics", icon: ImageIcon, detail: "Design engaging visuals for Instagram, Facebook, LinkedIn, and TikTok" },
-    { label: "Marketing Collateral", icon: FileText, detail: "Create brochures, flyers, presentations, business cards, and more" },
-    { label: "UI/UX Design", icon: LayoutTemplate, detail: "Design intuitive digital experiences for websites and applications" },
-    { label: "Print Design", icon: Printer, detail: "Produce high-quality artwork for professional print materials" },
-    { label: "Packaging Design", icon: Package, detail: "Create packaging that communicates value and attracts customers" },
-  ] as DesignCapability[],
+  capabilities,
+  coverage: capabilities,
 };
 
 export type DesignService = { title: string; icon: LucideIcon; description: string; metric: string };

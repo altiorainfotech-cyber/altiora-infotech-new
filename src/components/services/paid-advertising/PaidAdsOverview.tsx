@@ -6,7 +6,9 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { paidAdsOverview } from "@/data/paidAdvertising";
 import { paidAdsImages } from "@/data/paidAdvertisingImages";
-import { PaidAdsCoverageGrid } from "./PaidAdsCoverageGrid";
+import { PaidAdsCampaignJourney } from "./PaidAdsCampaignJourney";
+import { PaidAdsPerformanceTracking } from "./PaidAdsPerformanceTracking";
+import { PaidAdsEcosystemHub } from "./PaidAdsEcosystemHub";
 
 export function PaidAdsOverview() {
   return (
@@ -56,17 +58,26 @@ export function PaidAdsOverview() {
             </Reveal>
           </div>
 
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 space-y-8">
+            {/* SECTION 05: ADVERTISING ECOSYSTEM HUB */}
             <Reveal delay={0.08}>
-              <span className="text-xs font-black uppercase tracking-wider text-blue-800">
-                {paidAdsOverview.coverHeading}
-              </span>
+              <PaidAdsEcosystemHub />
             </Reveal>
-
-            <div className="mt-4">
-              <PaidAdsCoverageGrid />
-            </div>
           </div>
+        </div>
+
+        {/* SECTION 03: CAMPAIGN JOURNEY ARCHITECTURE */}
+        <div className="mt-16">
+          <Reveal delay={0.1}>
+            <PaidAdsCampaignJourney />
+          </Reveal>
+        </div>
+
+        {/* SECTION 04: REAL-TIME PERFORMANCE TRACKING SCULPTURE */}
+        <div className="mt-12">
+          <Reveal delay={0.12}>
+            <PaidAdsPerformanceTracking />
+          </Reveal>
         </div>
       </Container>
     </section>

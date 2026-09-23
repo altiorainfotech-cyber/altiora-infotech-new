@@ -64,7 +64,8 @@ export function HeroSlider() {
 
       <Container className="relative z-10">
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <div>
+          {/* On mobile: 3D Animation FIRST (order-1), Slider SECOND (order-2). On Desktop: Slider LEFT (lg:order-1), 3D Animation RIGHT (lg:order-2) */}
+          <div className="order-2 lg:order-1">
             <Carousel
               slides={slides}
               ariaLabel="Homepage highlights"
@@ -89,7 +90,9 @@ export function HeroSlider() {
             </div>
           </div>
 
-          <HeroVisual />
+          <div className="order-1 lg:order-2">
+            <HeroVisual />
+          </div>
         </div>
       </Container>
     </section>

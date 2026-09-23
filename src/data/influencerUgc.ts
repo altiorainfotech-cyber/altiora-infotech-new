@@ -32,20 +32,23 @@ export const influencerHero = {
 
 export type CreatorType = { label: string; icon: LucideIcon; detail: string };
 
+const capabilities: CreatorType[] = [
+  { label: "Nano & Micro Influencers", icon: Users, detail: "Reach niche audiences with authentic, highly engaged content" },
+  { label: "Macro Influencers", icon: Megaphone, detail: "Expand your brand reach through established creators" },
+  { label: "UGC Creators", icon: Camera, detail: "Create authentic, ad-ready content for your marketing campaigns" },
+  { label: "TikTok & Reels Creators", icon: Music2, detail: "Produce engaging short-form content designed for discovery" },
+  { label: "Instagram Creators", icon: Video, detail: "Build visual brand stories through posts, Stories, and Reels" },
+  { label: "YouTube & Podcast Creators", icon: Play, detail: "Build deeper audience trust through long-form content" },
+];
+
 export const influencerOverview = {
   eyebrow: "Service Overview",
   heading: "What Is Influencer & UGC Marketing?",
   p1: "Influencer and UGC marketing connects your brand with creators who can showcase your products through authentic, engaging content.",
   p2: "At Altiora Infotech, we handle creator discovery, campaign management, UGC production, content licensing, and performance tracking.",
   coverHeading: "Creator Types",
-  capabilities: [
-    { label: "Nano & Micro Influencers", icon: Users, detail: "Reach niche audiences with authentic, highly engaged content" },
-    { label: "Macro Influencers", icon: Megaphone, detail: "Expand your brand reach through established creators" },
-    { label: "UGC Creators", icon: Camera, detail: "Create authentic, ad-ready content for your marketing campaigns" },
-    { label: "TikTok & Reels Creators", icon: Music2, detail: "Produce engaging short-form content designed for discovery" },
-    { label: "Instagram Creators", icon: Video, detail: "Build visual brand stories through posts, Stories, and Reels" },
-    { label: "YouTube & Podcast Creators", icon: Play, detail: "Build deeper audience trust through long-form content" },
-  ] as CreatorType[],
+  capabilities,
+  coverage: capabilities,
 };
 
 export type InfluencerService = { title: string; icon: LucideIcon; description: string; metric: string };

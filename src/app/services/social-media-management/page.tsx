@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SocialMediaClientBackground } from "@/components/services/social-media/SocialMediaClientBackground";
 import { SocialMediaHero } from "@/components/services/social-media/SocialMediaHero";
 import { SocialMediaOverview } from "@/components/services/social-media/SocialMediaOverview";
+import { SocialMediaPlatforms } from "@/components/services/social-media/SocialMediaPlatforms";
 import { SocialMediaServicesGrid } from "@/components/services/social-media/SocialMediaServicesGrid";
 import { SocialMediaWhyChoose } from "@/components/services/social-media/SocialMediaWhyChoose";
 import { SocialMediaProcess } from "@/components/services/social-media/SocialMediaProcess";
@@ -32,6 +33,7 @@ export default function SocialMediaManagementPage() {
       <div className="relative z-10">
         <SocialMediaHero />
         <SocialMediaOverview />
+        <SocialMediaPlatforms />
         <SocialMediaServicesGrid />
         <SocialMediaWhyChoose />
         <SocialMediaProcess />

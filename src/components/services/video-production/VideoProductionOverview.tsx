@@ -5,10 +5,10 @@ import { Layers, Film } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { videoProductionOverview } from "@/data/videoProduction";
-import { VideoProductionCoverageGrid } from "./VideoProductionCoverageGrid";
-
-const overviewImage =
-  "https://images.unsplash.com/photo-1543242792-e06503878126?auto=format&fit=crop&w=1200&h=900&q=80";
+import { videoProductionImages } from "@/data/videoProductionImages";
+import { VideoProductionJourney } from "./VideoProductionJourney";
+import { VideoProductionPerformanceTracking } from "./VideoProductionPerformanceTracking";
+import { VideoProductionEcosystemHub } from "./VideoProductionEcosystemHub";
 
 export function VideoProductionOverview() {
   return (
@@ -42,7 +42,7 @@ export function VideoProductionOverview() {
               <div className="mt-6 relative overflow-hidden rounded-2xl border border-ink/8 shadow-lg">
                 <div className="relative aspect-[16/10] w-full">
                   <Image
-                    src={overviewImage}
+                    src={videoProductionImages.overview}
                     alt="Professional camera equipment on a video production set"
                     fill
                     className="object-cover"
@@ -58,17 +58,23 @@ export function VideoProductionOverview() {
             </Reveal>
           </div>
 
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 space-y-8">
             <Reveal delay={0.08}>
-              <span className="text-xs font-black uppercase tracking-wider text-blue-800">
-                {videoProductionOverview.coverHeading}
-              </span>
+              <VideoProductionEcosystemHub />
             </Reveal>
-
-            <div className="mt-4">
-              <VideoProductionCoverageGrid />
-            </div>
           </div>
+        </div>
+
+        <div className="mt-16">
+          <Reveal delay={0.1}>
+            <VideoProductionJourney />
+          </Reveal>
+        </div>
+
+        <div className="mt-12">
+          <Reveal delay={0.12}>
+            <VideoProductionPerformanceTracking />
+          </Reveal>
         </div>
       </Container>
     </section>

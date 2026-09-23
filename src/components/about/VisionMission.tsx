@@ -6,7 +6,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { visionMission } from "@/data/about";
 import { aboutImages } from "@/data/aboutImages";
-import { Compass, Target, Sparkles, CheckCircle2 } from "lucide-react";
+import { Compass, Target, Sparkles, CheckCircle2, ArrowRight } from "lucide-react";
 
 export function VisionMission() {
   return (
@@ -19,15 +19,26 @@ export function VisionMission() {
         <div className="text-center max-w-2xl mx-auto mb-10">
           <Reveal>
             <span className="text-xs font-black uppercase tracking-[0.2em] text-blue-700">
-              Guiding Principles
+              Strategic Blueprint
             </span>
             <h2 className="mt-2 text-3xl font-black tracking-tight text-ink sm:text-4xl">
-              Vision & Mission
+              Vision & Mission Path
             </h2>
             <p className="mt-2 text-sm font-medium text-muted">
-              Built on strategic execution, transparent partnership, and scalable Canadian growth.
+              A continuous visual path bridging long-term direction into tactical execution.
             </p>
           </Reveal>
+
+          {/* Continuous Path Visual Bar */}
+          <div className="mt-6 hidden sm:flex items-center justify-center gap-3 text-xs font-mono font-bold">
+            <span className="px-3 py-1 rounded-full bg-gold-100 text-gold-800 border border-gold-300">VISION</span>
+            <ArrowRight className="h-4 w-4 text-gold-500 animate-pulse" />
+            <span className="text-muted">WHERE WE ARE GOING</span>
+            <ArrowRight className="h-4 w-4 text-blue-500 animate-pulse" />
+            <span className="px-3 py-1 rounded-full bg-blue-100 text-blue-800 border border-blue-300">MISSION</span>
+            <ArrowRight className="h-4 w-4 text-emerald-500 animate-pulse" />
+            <span className="text-muted">HOW WE GET THERE</span>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -37,7 +48,6 @@ export function VisionMission() {
               glowColor="gold"
               className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-gold-300/40 bg-white p-8 sm:p-10 backdrop-blur-xl shadow-[0_20px_50px_-15px_rgba(211,172,60,0.15)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_60px_-15px_rgba(211,172,60,0.25)]"
             >
-              {/* Background Image Layer with Opacity */}
               <div className="absolute inset-0 z-0 overflow-hidden">
                 <Image
                   src={aboutImages.vision}
@@ -55,7 +65,7 @@ export function VisionMission() {
                     <Compass className="h-7 w-7" aria-hidden="true" />
                   </div>
                   <span className="rounded-full border border-gold-400/40 bg-gold-50/90 px-4 py-1.5 text-xs font-black uppercase tracking-wider text-gold-800 shadow-2xs backdrop-blur-md">
-                    Vision
+                    01 • Vision
                   </span>
                 </div>
 
@@ -70,7 +80,7 @@ export function VisionMission() {
 
               <div className="relative z-10 mt-8 flex items-center gap-2 border-t border-gold-400/30 pt-4 text-xs font-black uppercase tracking-wider text-gold-700">
                 <Sparkles className="h-4 w-4 text-gold-600 shrink-0" />
-                <span>Sustainable Canadian Success</span>
+                <span>Where We Are Going</span>
               </div>
             </TiltCard>
           </Reveal>
@@ -81,7 +91,6 @@ export function VisionMission() {
               glowColor="blue"
               className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-blue-400/40 bg-white p-8 sm:p-10 backdrop-blur-xl shadow-[0_20px_50px_-15px_rgba(28,79,161,0.15)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_60px_-15px_rgba(28,79,161,0.25)]"
             >
-              {/* Background Image Layer with Opacity */}
               <div className="absolute inset-0 z-0 overflow-hidden">
                 <Image
                   src={aboutImages.mission}
@@ -99,7 +108,7 @@ export function VisionMission() {
                     <Target className="h-7 w-7" aria-hidden="true" />
                   </div>
                   <span className="rounded-full border border-blue-400/40 bg-blue-50/90 px-4 py-1.5 text-xs font-black uppercase tracking-wider text-blue-800 shadow-2xs backdrop-blur-md">
-                    Mission
+                    02 • Mission
                   </span>
                 </div>
 
@@ -114,7 +123,7 @@ export function VisionMission() {
 
               <div className="relative z-10 mt-8 flex items-center gap-2 border-t border-blue-400/30 pt-4 text-xs font-black uppercase tracking-wider text-blue-700">
                 <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0" />
-                <span>Attract • Convert • Retain</span>
+                <span>How We Get There</span>
               </div>
             </TiltCard>
           </Reveal>

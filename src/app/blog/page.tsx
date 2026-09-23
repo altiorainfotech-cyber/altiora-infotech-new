@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { BlogHero } from "@/components/blog/BlogHero";
+import { BlogKnowledgeStream } from "@/components/blog/BlogKnowledgeStream";
 import { BlogFilterSearch } from "@/components/blog/BlogFilterSearch";
 import { FeaturedBlogCard } from "@/components/blog/FeaturedBlogCard";
 import { BlogGrid } from "@/components/blog/BlogGrid";
@@ -47,8 +48,9 @@ export default async function BlogPage({
   const gridPosts = showFeatured ? data.posts.slice(1) : data.posts;
 
   return (
-    <main className="relative min-h-screen bg-white text-ink">
+    <main className="relative min-h-screen bg-white text-ink overflow-hidden">
       <BlogHero search={search} category={category} />
+      <BlogKnowledgeStream />
       <BlogFilterSearch
         categories={categories}
         selectedCategory={category ?? "All"}

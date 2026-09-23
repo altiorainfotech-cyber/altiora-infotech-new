@@ -32,20 +32,23 @@ export const socialMediaHero = {
 
 export type SocialCapability = { label: string; icon: LucideIcon; detail: string };
 
+const capabilities: SocialCapability[] = [
+  { label: "Instagram", icon: Camera, detail: "Reels, Stories, posts, and audience growth" },
+  { label: "Facebook", icon: Users, detail: "Community building, content, and lead generation" },
+  { label: "LinkedIn", icon: Briefcase, detail: "Thought leadership and B2B audience growth" },
+  { label: "TikTok", icon: Music2, detail: "Short-form video and trend-driven campaigns" },
+  { label: "YouTube", icon: Play, detail: "Channel growth, video content, and SEO" },
+  { label: "X / Twitter", icon: Hash, detail: "Real-time engagement and brand conversations" },
+];
+
 export const socialMediaOverview = {
   eyebrow: "Service Overview",
   heading: "What Is Social Media Management?",
   p1: "Social media management includes strategy, content creation, publishing, community engagement, and performance tracking.",
   p2: "At Altiora Infotech, we manage your social presence from strategy to reporting, helping your brand stay consistent, engaging, and relevant.",
   coverHeading: "We Manage",
-  capabilities: [
-    { label: "Instagram", icon: Camera, detail: "Reels, Stories, posts, and audience growth" },
-    { label: "Facebook", icon: Users, detail: "Community building, content, and lead generation" },
-    { label: "LinkedIn", icon: Briefcase, detail: "Thought leadership and B2B audience growth" },
-    { label: "TikTok", icon: Music2, detail: "Short-form video and trend-driven campaigns" },
-    { label: "YouTube", icon: Play, detail: "Channel growth, video content, and SEO" },
-    { label: "X / Twitter", icon: Hash, detail: "Real-time engagement and brand conversations" },
-  ] as SocialCapability[],
+  capabilities,
+  coverage: capabilities,
 };
 
 export type SocialService = { title: string; icon: LucideIcon; description: string; metric: string };

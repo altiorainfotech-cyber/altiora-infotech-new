@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { ContactHero } from "@/components/contact/ContactHero";
+import { ContactRadarVisual } from "@/components/contact/ContactRadarVisual";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { ContactSidebar } from "@/components/contact/ContactSidebar";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
@@ -27,6 +28,9 @@ export default function ContactPage() {
     <main className="relative min-h-screen bg-white text-ink overflow-hidden pb-16 sm:pb-24">
       {/* Contact Hero Header */}
       <ContactHero />
+
+      {/* Signature Inquiry Signal Radar Section */}
+      <ContactRadarVisual />
 
       {/* Main Grid: Form + Sidebar */}
       <Container className="mt-6 sm:mt-10">

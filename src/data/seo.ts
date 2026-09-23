@@ -45,27 +45,78 @@ export const seoOverview = {
     { label: "AEO & GEO", icon: Bot, detail: "Optimize content for AI search and answer engines" },
     { label: "SEO Analytics", icon: LineChart, detail: "Track rankings, traffic, conversions & ongoing growth" },
   ] as SeoCapability[],
+  coverage: [
+    { label: "Technical SEO", icon: Code2, detail: "Improve site performance, crawlability, indexing & Core Web Vitals" },
+    { label: "Keyword Research", icon: Search, detail: "Target high-intent keywords that attract potential customers" },
+    { label: "On-Page SEO", icon: FileText, detail: "Optimize content, headings, metadata, internal links & schema" },
+    { label: "Local SEO", icon: MapPin, detail: "Improve Google Business Profile visibility and local rankings" },
+    { label: "Link Building", icon: LinkIcon, detail: "Build relevant backlinks and strengthen domain authority" },
+    { label: "Content Strategy", icon: PenTool, detail: "Create SEO-focused content that builds topical authority" },
+    { label: "AEO & GEO", icon: Bot, detail: "Optimize content for AI search and answer engines" },
+    { label: "SEO Analytics", icon: LineChart, detail: "Track rankings, traffic, conversions & ongoing growth" },
+  ] as SeoCapability[],
 };
 
-export type WhyChoosePoint = { title: string; icon: LucideIcon };
+export type SeoService = { title: string; icon: LucideIcon; description: string; metric: string };
 
-export const whyChooseSeo: WhyChoosePoint[] = [
-  { title: "Data-driven SEO strategies", icon: BarChart3 },
-  { title: "Technical SEO expertise", icon: Code2 },
-  { title: "White-hat practices", icon: ShieldCheck },
-  { title: "Transparent reporting", icon: FileCheck },
-  { title: "Customized strategies", icon: Sliders },
-  { title: "Continuous optimization", icon: RefreshCw },
+export const seoServices: SeoService[] = [
+  {
+    title: "Technical SEO",
+    icon: Code2,
+    description: "Audit and optimize site architecture, speed, crawlability, indexing, and Core Web Vitals.",
+    metric: "Crawl & Speed Optimized",
+  },
+  {
+    title: "Keyword & Entity Strategy",
+    icon: Search,
+    description: "Identify high-intent keywords, topical clusters, and semantic entities to capture search share.",
+    metric: "High-Intent Clustering",
+  },
+  {
+    title: "On-Page SEO",
+    icon: FileText,
+    description: "Optimize title tags, meta descriptions, headings, content structure, and internal link architecture.",
+    metric: "100% On-Page Precision",
+  },
+  {
+    title: "Local SEO & GMB",
+    icon: MapPin,
+    description: "Optimize Google Business Profile, local citations, map pack rankings, and location pages.",
+    metric: "Top Map Pack Visibility",
+  },
+  {
+    title: "Link Building & Authority",
+    icon: LinkIcon,
+    description: "Acquire high-authority editorial backlinks and digital PR coverage to build domain trust.",
+    metric: "High-DA Backlinks",
+  },
+  {
+    title: "SEO Analytics & AEO",
+    icon: LineChart,
+    description: "Track organic rank positions, conversions, revenue impact, and optimize for AI search engines.",
+    metric: "Continuous Growth Tracking",
+  },
 ];
 
-export type ProcessStep = { number: string; title: string; icon: LucideIcon };
+export type WhyChoosePoint = { title: string; icon: LucideIcon; description?: string };
+
+export const whyChooseSeo: WhyChoosePoint[] = [
+  { title: "Data-driven SEO strategies", icon: BarChart3, description: "Every optimization is guided by real search volume and intent metrics." },
+  { title: "Technical SEO expertise", icon: Code2, description: "Deep technical auditing ensuring flawless crawling and indexing." },
+  { title: "White-hat practices", icon: ShieldCheck, description: "100% Google guideline-compliant strategies for sustainable long-term rankings." },
+  { title: "Transparent reporting", icon: FileCheck, description: "Clear monthly dashboards detailing keyword movements and conversions." },
+  { title: "Customized strategies", icon: Sliders, description: "Tailored campaigns designed specifically for your industry vertical." },
+  { title: "Continuous optimization", icon: RefreshCw, description: "Proactive rank tracking and iterative updates to maintain top search share." },
+];
+
+export type ProcessStep = { number: string; title: string; icon: LucideIcon; description: string };
 
 export const seoProcess: ProcessStep[] = [
-  { number: "01", title: "SEO Audit", icon: SearchCheck },
-  { number: "02", title: "Keyword Research", icon: Search },
-  { number: "03", title: "Optimization", icon: Settings },
-  { number: "04", title: "Content & Authority", icon: Award },
-  { number: "05", title: "Tracking & Reporting", icon: ClipboardList },
+  { number: "01", title: "SEO Audit", icon: SearchCheck, description: "Comprehensive audit of site health, crawlability, indexation & speed." },
+  { number: "02", title: "Keyword Research", icon: Search, description: "Target high-intent keywords and competitor content gaps." },
+  { number: "03", title: "Optimization", icon: Settings, description: "Optimize on-page elements, technical code, entities & structure." },
+  { number: "04", title: "Content & Authority", icon: Award, description: "Create high-value content and acquire authoritative backlinks." },
+  { number: "05", title: "Tracking & Scale", icon: ClipboardList, description: "Monitor rankings, CTR, conversions & continuously scale." },
 ];
 
 export const seoCta = {

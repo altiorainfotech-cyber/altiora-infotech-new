@@ -36,8 +36,8 @@ export function HomeHeader() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 border-b border-ink/8 bg-white/90 backdrop-blur-xl transition-all duration-300",
-        isScrolled && "border-ink/12 bg-white/95 shadow-[0_8px_30px_rgba(20,21,26,0.06)]"
+        "sticky top-0 z-[100] border-b border-ink/8 bg-white/95 backdrop-blur-xl transition-all duration-300",
+        isScrolled && "border-ink/12 bg-white/98 shadow-[0_8px_30px_rgba(20,21,26,0.08)]"
       )}
     >
       <Container className="flex h-16 items-center justify-between sm:h-[72px]">
@@ -76,8 +76,8 @@ export function HomeHeader() {
             </button>
           </Dialog.Trigger>
           <Dialog.Portal>
-            <Dialog.Overlay className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in" />
-            <Dialog.Content className="fixed inset-y-0 right-0 z-50 flex w-full max-w-xs flex-col bg-white border-l border-ink/10 p-6 shadow-2xl focus:outline-none">
+            <Dialog.Overlay className="fixed inset-0 z-[110] bg-black/40 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in" />
+            <Dialog.Content className="fixed inset-y-0 right-0 z-[120] flex w-full max-w-xs flex-col bg-white border-l border-ink/10 p-6 shadow-2xl focus:outline-none">
               <div className="flex items-center justify-between">
                 <Dialog.Title asChild>
                   <span className="text-lg font-bold text-ink font-mono">Menu</span>

@@ -9,14 +9,14 @@ import { CheckCircle2, BarChart3 } from "lucide-react";
 export function BrandingMetrics() {
   return (
     <section className="relative overflow-hidden bg-transparent py-14 sm:py-20" aria-labelledby="branding-metrics-heading">
-      <div className="pointer-events-none absolute -left-40 top-1/3 -z-10 h-96 w-96 rounded-full bg-gold-400/10 blur-[100px]" />
+      <div className="pointer-events-none absolute -left-40 top-1/3 -z-10 h-96 w-96 rounded-full bg-blue-600/10 blur-[100px]" />
 
       <Container>
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-6">
             <Reveal>
-              <div className="inline-flex items-center gap-2 rounded-full border border-gold-400/30 bg-gold-50/80 px-3.5 py-1.5 text-xs font-extrabold text-gold-800">
-                <BarChart3 className="h-3.5 w-3.5 text-gold-600" />
+              <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-white/80 px-3.5 py-1.5 text-xs font-extrabold text-blue-800 shadow-sm backdrop-blur-md">
+                <BarChart3 className="h-3.5 w-3.5 text-blue-600" />
                 <span>Business Impact</span>
               </div>
             </Reveal>
@@ -59,7 +59,7 @@ export function BrandingMetrics() {
                       key={metric.label}
                       className={
                         "rounded-2xl border p-4 " +
-                        (idx % 2 === 0 ? "border-blue-200/50 bg-blue-50/40" : "border-gold-200/50 bg-gold-50/40")
+                        (idx % 2 === 0 ? "border-blue-200/50 bg-blue-50/40" : "border-gold-300/40 bg-gold-50/30")
                       }
                     >
                       <div className="text-2xl font-black leading-none tracking-tight text-ink sm:text-3xl">

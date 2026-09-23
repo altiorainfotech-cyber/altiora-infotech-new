@@ -17,7 +17,7 @@ export function ConsultingHero() {
 
       <Container className="relative z-10">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
-          <div className="lg:col-span-7">
+          <div className="order-2 lg:order-1 lg:col-span-7">
             <Reveal>
               <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-white/80 px-4 py-1.5 text-xs font-extrabold text-blue-800 shadow-sm backdrop-blur-md">
                 <Briefcase className="h-3.5 w-3.5 text-blue-600" />
@@ -61,7 +61,7 @@ export function ConsultingHero() {
             </Reveal>
           </div>
 
-          <div className="lg:col-span-5 relative">
+          <div className="order-1 lg:order-2 lg:col-span-5 relative">
             <Reveal delay={0.2}>
               <div
                 className="relative aspect-[4/3] sm:aspect-[16/11] w-full overflow-hidden rounded-3xl border border-white/80 bg-gradient-to-br from-white/90 via-slate-50/70 to-blue-50/40 backdrop-blur-2xl shadow-[0_25px_60px_-15px_rgba(20,21,26,0.14)] transition-transform duration-500 hover:-translate-y-1 hover:shadow-[0_30px_70px_-15px_rgba(28,79,161,0.22)]"
@@ -72,7 +72,7 @@ export function ConsultingHero() {
                 <ConsultingHeroVisualClient />
 
                 <div className="absolute top-4 left-4 z-20 flex items-center gap-2 rounded-xl border border-white/80 bg-white/90 px-3.5 py-1.5 text-[11px] font-extrabold text-ink shadow-lg backdrop-blur-md">
-                  <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="h-2 w-2 rounded-full bg-blue-600 animate-pulse" />
                   <span>KPIs Tracked Continuously</span>
                 </div>
 
