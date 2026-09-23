@@ -8,7 +8,7 @@ import { webDevServices } from "@/data/webDevelopment";
 import { Sparkles, ChevronDown } from "lucide-react";
 
 const DEG2RAD = Math.PI / 180;
-const ORBIT_RADIUS = 37;
+const ORBIT_RADIUS = 37.5;
 
 function polar(angleDeg: number, radius: number) {
   const rad = angleDeg * DEG2RAD;
@@ -121,7 +121,7 @@ export function WebDevServicesGrid() {
 
               <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" aria-hidden="true">
                 {/* decorative dashed orbit rings */}
-                <circle cx="50" cy="50" r="20" fill="none" stroke="rgba(20,21,26,0.06)" strokeWidth="0.3" strokeDasharray="1.2 2" />
+                <circle cx="50" cy="50" r="26" fill="none" stroke="rgba(20,21,26,0.06)" strokeWidth="0.3" strokeDasharray="1.2 2" />
                 <circle cx="50" cy="50" r={ORBIT_RADIUS} fill="none" stroke="rgba(20,21,26,0.06)" strokeWidth="0.3" strokeDasharray="1.2 2" />
 
                 {orbitNodes.map((node, i) => {
@@ -168,17 +168,17 @@ export function WebDevServicesGrid() {
                   onFocus={() => setActive("core")}
                   onBlur={() => setActive(null)}
                   aria-describedby={`${uid}-core-desc`}
-                  className="focus-ring group relative flex h-36 w-36 flex-col items-center justify-center gap-1.5 rounded-full border border-blue-400/30 bg-white text-center shadow-[0_15px_40px_-15px_rgba(28,79,161,0.25)]"
-                  animate={prefersReducedMotion ? undefined : { scale: [1, 1.025, 1] }}
+                  className="focus-ring group relative flex h-52 w-52 sm:h-54 sm:w-54 flex-col items-center justify-center gap-2 rounded-full border border-blue-400/30 bg-white text-center shadow-[0_15px_45px_-15px_rgba(28,79,161,0.25)] p-4"
+                  animate={prefersReducedMotion ? undefined : { scale: [1, 1.02, 1] }}
                   transition={prefersReducedMotion ? undefined : { duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-                  whileHover={{ scale: 1.05 }}
-                  whileFocus={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.04 }}
+                  whileFocus={{ scale: 1.04 }}
                 >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white shadow-md">
-                    <CoreIcon className="h-5 w-5" aria-hidden="true" />
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white shadow-md">
+                    <CoreIcon className="h-7 w-7" aria-hidden="true" />
                   </div>
-                  <span className="text-xs font-black leading-tight text-ink">{core.title}</span>
-                  <span id={`${uid}-core-desc`} className="px-4 text-[10px] leading-snug text-muted">
+                  <span className="text-base font-black leading-tight text-ink mt-0.5">{core.title}</span>
+                  <span id={`${uid}-core-desc`} className="px-3 text-xs font-medium leading-relaxed text-muted">
                     {core.description}
                   </span>
                 </motion.button>

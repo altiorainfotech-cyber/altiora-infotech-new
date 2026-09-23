@@ -4,7 +4,7 @@ import { useId, useState } from "react";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { aeoGeoServices } from "@/data/aeoGeo";
+import { businessConsultingServices } from "@/data/businessConsulting";
 import { Sparkles, ChevronDown } from "lucide-react";
 
 const DEG2RAD = Math.PI / 180;
@@ -37,7 +37,7 @@ function bezierPoint(t: number, cx: number, cy: number, x1: number, y1: number) 
   };
 }
 
-const [core, ...satellites] = aeoGeoServices;
+const [core, ...satellites] = businessConsultingServices;
 
 const orbitNodes = satellites.map((service, i) => {
   const angle = -90 + i * 72;
@@ -47,9 +47,9 @@ const orbitNodes = satellites.map((service, i) => {
   return { service, x, y, d, samples, tone: (i % 2 === 0 ? "blue" : "gold") as "blue" | "gold" };
 });
 
-const DECOR_TAGS: Record<number, string> = { 1: "LIVE", 4: "99.1%" };
+const DECOR_TAGS: Record<number, string> = { 1: "LIVE", 4: "94.3%" };
 
-export function AeoGeoServicesGrid() {
+export function ConsultingServicesGrid() {
   const prefersReducedMotion = useReducedMotion();
   const [active, setActive] = useState<number | "core" | null>(null);
   const [openMobile, setOpenMobile] = useState<number | null>(null);
@@ -57,7 +57,7 @@ export function AeoGeoServicesGrid() {
   const CoreIcon = core.icon;
 
   return (
-    <section className="relative overflow-hidden bg-transparent py-14 sm:py-20" aria-labelledby="aeo-geo-services-heading">
+    <section className="relative overflow-hidden bg-transparent py-14 sm:py-20" aria-labelledby="consulting-services-heading">
       <Container>
         <div className="max-w-2xl">
           <Reveal>
@@ -67,14 +67,13 @@ export function AeoGeoServicesGrid() {
             </div>
           </Reveal>
           <Reveal delay={0.05}>
-            <h2 id="aeo-geo-services-heading" className="mt-3 text-3xl font-black tracking-tight text-ink sm:text-4xl">
-              Our AEO &amp; GEO Services
+            <h2 id="consulting-services-heading" className="mt-3 text-3xl font-black tracking-tight text-ink sm:text-4xl">
+              Our Business Consulting Services
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-3 text-sm sm:text-base leading-relaxed text-muted">
-              Six connected disciplines, one AI visibility strategy — built to make your brand easier for AI engines
-              to understand, trust, and reference.
+              Practical consulting solutions designed to solve challenges and create measurable business outcomes.
             </p>
           </Reveal>
         </div>
@@ -106,17 +105,17 @@ export function AeoGeoServicesGrid() {
 
               {/* System labels */}
               <div className="pointer-events-none absolute left-5 top-5 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-ink/35">
-                AI Visibility System
+                Business Growth System
               </div>
               <div className="pointer-events-none absolute right-5 top-5 flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-ink/40">
                 <span className="relative flex h-1.5 w-1.5">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold-500 opacity-60" />
                   <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-gold-500" />
                 </span>
-                AI Search &bull; Active
+                Strategy &bull; Active
               </div>
               <div className="pointer-events-none absolute bottom-5 left-5 font-mono text-[10px] font-medium tracking-[0.1em] text-ink/25">
-                ENGINES 05 &middot; SYNC OK
+                SERVICES 06 &middot; READY
               </div>
 
               <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" aria-hidden="true">
@@ -159,7 +158,7 @@ export function AeoGeoServicesGrid() {
                 })}
               </svg>
 
-              {/* Core node — AEO Strategy */}
+              {/* Core node — Strategic Planning */}
               <div className="absolute z-10 -translate-x-1/2 -translate-y-1/2" style={{ left: "50%", top: "50%" }}>
                 <motion.button
                   type="button"
@@ -261,7 +260,7 @@ export function AeoGeoServicesGrid() {
         <div className="mt-12 lg:hidden">
           <div className="relative rounded-2xl border border-ink/8 bg-white p-5">
             <div className="mb-4 flex items-center justify-between font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-ink/40">
-              <span>AI Visibility System</span>
+              <span>Business Growth System</span>
               <span className="flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-gold-500" />
                 Active
