@@ -1,88 +1,95 @@
 "use client";
 
-import { Bot, Sparkles, ShieldCheck } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Bot, Cpu, Activity } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { Button } from "@/components/ui/Button";
 import { aeoGeoHero } from "@/data/aeoGeo";
-import { AeoGeoHeroVisualClient } from "./AeoGeoHeroVisualClient";
+import AeoGeoHeroVisual from "./AeoGeoHeroVisual";
 
 export function AeoGeoHero() {
   return (
-    <section className="relative overflow-hidden bg-transparent pt-10 pb-16 sm:pt-16 sm:pb-24">
-      <div
-        className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[550px] w-[950px] -translate-x-1/2 rounded-full bg-gradient-to-tr from-blue-600/10 via-gold-400/10 to-transparent blur-3xl opacity-80"
-        aria-hidden="true"
-      />
+    <section className="relative overflow-hidden pt-28 pb-16 lg:pt-36 lg:pb-24">
+      <div className="pointer-events-none absolute -top-40 right-0 -z-10 h-96 w-96 rounded-full bg-blue-500/10 blur-[120px]" />
 
-      <Container className="relative z-10">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
-          <div className="lg:col-span-7">
+      <Container>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          <div className="order-2 lg:order-1 lg:col-span-7 space-y-6 text-left">
             <Reveal>
-              <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-white/80 px-4 py-1.5 text-xs font-extrabold text-blue-800 shadow-sm backdrop-blur-md">
-                <Bot className="h-3.5 w-3.5 text-blue-600" />
+              <div className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-50/80 px-4 py-1.5 text-xs font-extrabold text-blue-900 backdrop-blur-md">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
+                </span>
                 <span>{aeoGeoHero.eyebrow}</span>
+                <span className="text-gold-500 font-black">|</span>
+                <span className="text-blue-700 font-mono">AI SEARCH ENGINE v4.2</span>
               </div>
             </Reveal>
 
-            <Reveal delay={0.08}>
-              <h1 className="mt-5 text-[clamp(2.25rem,4.6vw,3.75rem)] font-black leading-[1.1] tracking-tight text-ink text-balance">
-                <span className="bg-gradient-to-r from-ink via-blue-900 to-gold-600 bg-clip-text text-transparent">
-                  {aeoGeoHero.heading}
-                </span>
+            <Reveal delay={0.05}>
+              <h1 className="text-4xl font-black tracking-tight text-ink sm:text-5xl lg:text-6xl leading-[1.1]">
+                {aeoGeoHero.heading}
               </h1>
             </Reveal>
 
-            <Reveal delay={0.14}>
-              <p className="mt-5 max-w-xl text-base sm:text-xl font-medium leading-relaxed text-muted text-balance">
+            <Reveal delay={0.1}>
+              <p className="text-base sm:text-lg text-muted font-medium leading-relaxed max-w-2xl">
                 {aeoGeoHero.description}
               </p>
             </Reveal>
 
-            <Reveal delay={0.2}>
-              <div className="mt-6 flex flex-wrap items-center gap-y-2 gap-x-6 text-xs font-bold text-ink/80">
-                <div className="flex items-center gap-2">
-                  <ShieldCheck className="h-4 w-4 text-blue-600" />
-                  <span>AI Search Visibility</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Sparkles className="h-4 w-4 text-gold-500" />
-                  <span>Multi-Engine Optimization</span>
+            <Reveal delay={0.15}>
+              <div className="pt-2 flex flex-wrap items-center gap-4">
+                <Link
+                  href={aeoGeoHero.cta.href}
+                  className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 px-7 py-3.5 text-sm font-black text-white shadow-xl shadow-blue-600/25 transition-all hover:scale-105 hover:shadow-blue-600/40"
+                >
+                  <span>{aeoGeoHero.cta.label}</span>
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border border-ink/8 bg-white/80 shadow-sm backdrop-blur-md">
+                  <Bot className="h-4 w-4 text-blue-500 animate-pulse" />
+                  <span className="text-xs font-mono font-bold text-ink/80">ChatGPT &amp; Perplexity Citations</span>
                 </div>
               </div>
             </Reveal>
 
-            <Reveal delay={0.26}>
-              <div className="mt-8">
-                <Button href={aeoGeoHero.cta.href} className="px-7 py-3.5 text-sm font-bold shadow-lg shadow-blue-600/20">
-                  {aeoGeoHero.cta.label}
-                </Button>
+            <Reveal delay={0.2}>
+              <div className="pt-6 grid grid-cols-3 gap-4 border-t border-ink/8">
+                <div>
+                  <div className="text-2xl font-black text-blue-600">88.9%</div>
+                  <div className="text-xs font-medium text-muted">AI Citation Share</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-black text-gold-600">4.2x</div>
+                  <div className="text-xs font-medium text-muted">Answer Engine ROAS</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-black text-ink">100%</div>
+                  <div className="text-xs font-medium text-muted">Schema Accuracy</div>
+                </div>
               </div>
             </Reveal>
           </div>
 
-          <div className="lg:col-span-5 relative">
-            <Reveal delay={0.2}>
-              <div
-                className="relative aspect-[4/3] sm:aspect-[16/11] w-full overflow-hidden rounded-3xl border border-white/80 bg-gradient-to-br from-white/90 via-slate-50/70 to-blue-50/40 backdrop-blur-2xl shadow-[0_25px_60px_-15px_rgba(20,21,26,0.14)] transition-transform duration-500 hover:-translate-y-1 hover:shadow-[0_30px_70px_-15px_rgba(28,79,161,0.22)]"
-              >
-                <div className="pointer-events-none absolute -top-16 -right-16 h-56 w-56 rounded-full bg-gold-400/20 blur-[80px]" />
-                <div className="pointer-events-none absolute -bottom-16 -left-16 h-56 w-56 rounded-full bg-blue-600/20 blur-[80px]" />
-
-                <AeoGeoHeroVisualClient />
-
-                <div className="absolute top-4 left-4 z-20 flex items-center gap-2 rounded-xl border border-white/80 bg-white/90 px-3.5 py-1.5 text-[11px] font-extrabold text-ink shadow-lg backdrop-blur-md">
-                  <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>AI Citations Monitored</span>
-                </div>
-
-                <div className="absolute bottom-4 right-4 z-20 rounded-full border border-gold-400/40 bg-gold-500/20 px-3 py-1 text-[11px] font-black text-gold-700 backdrop-blur-md">
-                  Answer-Engine Ready
-                </div>
-
-                <div className="pointer-events-none absolute inset-x-6 bottom-0 h-0.5 bg-gradient-to-r from-transparent via-gold-400/60 to-transparent" />
+          <div className="order-1 lg:order-2 lg:col-span-5 relative">
+            <div className="relative mx-auto max-w-[480px] rounded-3xl border border-blue-200/60 bg-gradient-to-b from-white via-blue-50/40 to-slate-50 p-4 shadow-2xl backdrop-blur-xl">
+              <div className="absolute top-4 left-4 z-20 flex items-center gap-2 rounded-full border border-blue-200 bg-white/90 px-3 py-1 text-[11px] font-mono font-bold text-blue-900 shadow-sm">
+                <Activity className="h-3 w-3 text-blue-600 animate-spin" style={{ animationDuration: "6s" }} />
+                <span>REAL-TIME AI CITATION STREAM</span>
               </div>
-            </Reveal>
+              <div className="relative aspect-square w-full">
+                <AeoGeoHeroVisual />
+              </div>
+              <div className="mt-3 flex items-center justify-between border-t border-blue-100 pt-3 px-2 text-[11px] font-mono font-bold text-blue-900">
+                <span className="flex items-center gap-1">
+                  <Cpu className="h-3.5 w-3.5 text-blue-600" />
+                  <span>AI SEARCH ENGINE ACTIVE</span>
+                </span>
+                <span className="text-gold-600">CITATIONS ONLINE</span>
+              </div>
+            </div>
           </div>
         </div>
       </Container>

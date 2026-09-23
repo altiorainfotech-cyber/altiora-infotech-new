@@ -3,8 +3,10 @@ import { HeroSlider } from "@/components/homepage/HeroSlider";
 import { QuickAnswer } from "@/components/homepage/QuickAnswer";
 import { GrowthMetrics } from "@/components/homepage/GrowthMetrics";
 import { ServicesCarousel } from "@/components/homepage/ServicesCarousel";
+import { GrowthCalculatorWidget } from "@/components/homepage/GrowthCalculatorWidget";
 import { WhyAltiora } from "@/components/homepage/WhyAltiora";
 import { ServiceEcosystem } from "@/components/homepage/ServiceEcosystem";
+import { AgencyComparisonMatrix } from "@/components/about/AgencyComparisonMatrix";
 import { ProcessTimeline } from "@/components/homepage/ProcessTimeline";
 import { ResultsCarousel } from "@/components/homepage/ResultsCarousel";
 import { IndustriesCarousel } from "@/components/homepage/IndustriesCarousel";
@@ -19,9 +21,11 @@ export default function Home() {
       <div className="relative z-10">
         <HeroSlider />
         <GrowthMetrics />
+        <GrowthCalculatorWidget />
         <QuickAnswer />
         <ServicesCarousel />
         <WhyAltiora />
+        <AgencyComparisonMatrix />
         <ServiceEcosystem />
         <ProcessTimeline />
         <ResultsCarousel />

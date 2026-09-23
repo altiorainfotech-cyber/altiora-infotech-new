@@ -21,11 +21,27 @@ export const brandingHero = {
   cta: { label: "Build Your Brand", href: "/contact" },
 };
 
+export type BrandCapability = { label: string; icon: LucideIcon; detail: string };
+
+const capabilities: BrandCapability[] = [
+  { label: "Brand Strategy", icon: Compass, detail: "Define vision, values, positioning & competitive edge" },
+  { label: "Visual Identity", icon: Palette, detail: "Cohesive logo, colors, typography & visual language" },
+  { label: "Brand Messaging", icon: MessageCircle, detail: "Craft unique voice, tone, taglines & value props" },
+  { label: "Brand Guidelines", icon: BookOpen, detail: "Comprehensive brand standards for team consistency" },
+  { label: "Brand Positioning", icon: Target, detail: "Own a distinct, high-value space in customer minds" },
+  { label: "Brand Relaunch", icon: RefreshCw, detail: "Modernize established brands while preserving equity" },
+];
+
 export const brandingOverview = {
   eyebrow: "Overview",
   heading: "Your Brand Is Your Most Valuable Asset",
+  p1: "Your brand is the most valuable asset your business owns — yet most businesses treat it as an afterthought.",
+  p2: "At Altiora Infotech, we build brands that shape perception, command premium pricing, and create deep customer trust.",
   paragraph:
     "Your brand is the most valuable asset your business owns — yet most businesses treat it as an afterthought. At Altiora Infotech, we build brands that shape perception, command premium pricing, and create the kind of deep customer trust that drives long-term business growth. From brand strategy and visual identity to messaging frameworks and brand guidelines, we craft every element with strategic intent — ensuring your brand doesn't just look good, but actively works to grow your business.",
+  coverHeading: "What We Build",
+  capabilities,
+  coverage: capabilities,
 };
 
 export type BrandBadge = { big: string; small: string };
@@ -211,13 +227,6 @@ export const whyChooseBranding: WhyChoosePoint[] = [
 
 export type ProcessStep = { number: string; title: string; icon: LucideIcon; description: string };
 
-/**
- * NOTE: the source content only exposed the active carousel slide (06 — Launch &
- * Implementation) since it's an auto-playing carousel; steps 01–05 only appeared as
- * pip numbers. Titles/descriptions for 01–05 below are inferred from the rest of the
- * page's own categories (Discovery, Strategy, Identity, Messaging, Guidelines) to keep
- * the 6-step carousel coherent — swap in the real copy if available.
- */
 export const brandingProcess: ProcessStep[] = [
   { number: "01", title: "Discovery & Audit", icon: SearchCheck, description: "Understand your business, audience, competitors, and current brand perception." },
   { number: "02", title: "Strategy & Positioning", icon: Compass, description: "Define your mission, values, and the unique market position you'll own." },
@@ -246,6 +255,7 @@ export const whyWorkWithUs: WhyWorkPoint[] = [
 export const brandingCta = {
   eyebrow: "Branding Services",
   heading: "Ready to Build a Brand That Stands Apart?",
+  description: "Your brand is the foundation everything else is built on. At Altiora Infotech, we build brands that attract premium customers, command higher prices, and create lasting business value.",
   p1: "Your brand is the foundation everything else is built on. At Altiora Infotech, we build brands that attract premium customers, command higher prices, and create lasting business value through strategic identity and consistent presence.",
   p2: "Share your business goals and brand vision, and we'll create a comprehensive branding proposal including strategy, visual concepts, and a clear roadmap for your brand transformation.",
   primaryCta: { label: "Book Brand Strategy Call", href: "/contact" },

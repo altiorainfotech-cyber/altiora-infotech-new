@@ -1,18 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { Layers, Gauge } from "lucide-react";
+import { Layers, TrendingUp } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { webDevOverview } from "@/data/webDevelopment";
-import { WebDevCoverageGrid } from "./WebDevCoverageGrid";
-
-const overviewImage =
-  "https://images.unsplash.com/photo-1633114128729-0a8dc13406b9?auto=format&fit=crop&w=1200&h=900&q=80";
+import { webDevImages } from "@/data/webDevImages";
+import { WebDevJourney } from "./WebDevJourney";
+import { WebDevPerformanceTracking } from "./WebDevPerformanceTracking";
+import { WebDevEcosystemHub } from "./WebDevEcosystemHub";
 
 export function WebDevOverview() {
   return (
-    <section className="relative overflow-hidden bg-transparent py-14 sm:py-20" aria-labelledby="webdev-overview-heading">
+    <section className="relative overflow-hidden bg-transparent py-14 sm:py-20" aria-labelledby="web-dev-overview-heading">
       <div className="pointer-events-none absolute -left-40 top-1/3 -z-10 h-96 w-96 rounded-full bg-blue-500/10 blur-[100px]" />
 
       <Container>
@@ -26,7 +26,7 @@ export function WebDevOverview() {
             </Reveal>
 
             <Reveal delay={0.05}>
-              <h2 id="webdev-overview-heading" className="mt-4 text-3xl font-black tracking-tight text-ink sm:text-4xl leading-[1.15]">
+              <h2 id="web-dev-overview-heading" className="mt-4 text-3xl font-black tracking-tight text-ink sm:text-4xl leading-[1.15]">
                 {webDevOverview.heading}
               </h2>
             </Reveal>
@@ -42,33 +42,39 @@ export function WebDevOverview() {
               <div className="mt-6 relative overflow-hidden rounded-2xl border border-ink/8 shadow-lg">
                 <div className="relative aspect-[16/10] w-full">
                   <Image
-                    src={overviewImage}
-                    alt="Modern website development workflow"
+                    src={webDevImages.overview}
+                    alt="Web development analytics dashboard"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 500px"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/10 to-transparent" />
                   <div className="absolute bottom-3 left-3 flex items-center gap-2 rounded-lg border border-ink/10 bg-white/90 px-3 py-1.5 text-xs font-bold text-ink shadow-sm backdrop-blur-md">
-                    <Gauge className="h-4 w-4 text-blue-600" />
-                    <span>Built for Speed &amp; Core Web Vitals</span>
+                    <TrendingUp className="h-4 w-4 text-blue-600" />
+                    <span>Sub-Second Page Load Active</span>
                   </div>
                 </div>
               </div>
             </Reveal>
           </div>
 
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 space-y-8">
             <Reveal delay={0.08}>
-              <span className="text-xs font-black uppercase tracking-wider text-blue-800">
-                {webDevOverview.coverHeading}
-              </span>
+              <WebDevEcosystemHub />
             </Reveal>
-
-            <div className="mt-4">
-              <WebDevCoverageGrid />
-            </div>
           </div>
+        </div>
+
+        <div className="mt-16">
+          <Reveal delay={0.1}>
+            <WebDevJourney />
+          </Reveal>
+        </div>
+
+        <div className="mt-12">
+          <Reveal delay={0.12}>
+            <WebDevPerformanceTracking />
+          </Reveal>
         </div>
       </Container>
     </section>

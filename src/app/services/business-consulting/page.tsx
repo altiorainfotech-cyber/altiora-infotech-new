@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { ConsultingClientBackground } from "@/components/services/business-consulting/ConsultingClientBackground";
-import { ConsultingHero } from "@/components/services/business-consulting/ConsultingHero";
-import { ConsultingOverview } from "@/components/services/business-consulting/ConsultingOverview";
-import { ConsultingServicesGrid } from "@/components/services/business-consulting/ConsultingServicesGrid";
-import { ConsultingWhyChoose } from "@/components/services/business-consulting/ConsultingWhyChoose";
-import { ConsultingProcess } from "@/components/services/business-consulting/ConsultingProcess";
-import { ConsultingCTA } from "@/components/services/business-consulting/ConsultingCTA";
+import { BusinessConsultingClientBackground } from "@/components/services/business-consulting/BusinessConsultingClientBackground";
+import { BusinessConsultingHero } from "@/components/services/business-consulting/BusinessConsultingHero";
+import { BusinessConsultingOverview } from "@/components/services/business-consulting/BusinessConsultingOverview";
+import { BusinessConsultingServicesGrid } from "@/components/services/business-consulting/BusinessConsultingServicesGrid";
+import { BusinessConsultingWhyChoose } from "@/components/services/business-consulting/BusinessConsultingWhyChoose";
+import { BusinessConsultingProcess } from "@/components/services/business-consulting/BusinessConsultingProcess";
+import { BusinessConsultingCTA } from "@/components/services/business-consulting/BusinessConsultingCTA";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -28,14 +28,14 @@ export const metadata: Metadata = {
 export default function BusinessConsultingPage() {
   return (
     <main className="relative min-h-screen bg-white text-ink overflow-hidden">
-      <ConsultingClientBackground />
+      <BusinessConsultingClientBackground />
       <div className="relative z-10">
-        <ConsultingHero />
-        <ConsultingOverview />
-        <ConsultingServicesGrid />
-        <ConsultingWhyChoose />
-        <ConsultingProcess />
-        <ConsultingCTA />
+        <BusinessConsultingHero />
+        <BusinessConsultingOverview />
+        <BusinessConsultingServicesGrid />
+        <BusinessConsultingWhyChoose />
+        <BusinessConsultingProcess />
+        <BusinessConsultingCTA />
       </div>
     </main>
   );

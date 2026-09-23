@@ -33,20 +33,23 @@ export const webDevHero = {
 
 export type WebDevCapability = { label: string; icon: LucideIcon; detail: string };
 
+const capabilities: WebDevCapability[] = [
+  { label: "Business Websites", icon: Building2, detail: "Professional websites designed to build trust and generate leads" },
+  { label: "E-Commerce Stores", icon: ShoppingCart, detail: "High-converting online stores with secure payments and product management" },
+  { label: "Landing Pages", icon: MousePointerClick, detail: "Focused pages designed to turn visitors into leads and customers" },
+  { label: "Portfolio Websites", icon: Palette, detail: "Modern websites that showcase your work and build credibility" },
+  { label: "SaaS & Web Apps", icon: LayoutDashboard, detail: "Scalable applications with custom features, dashboards, and integrations" },
+  { label: "WordPress Websites", icon: Globe, detail: "Custom, responsive WordPress websites that are easy to manage" },
+];
+
 export const webDevOverview = {
   eyebrow: "Service Overview",
   heading: "What Are Website Development Services?",
   p1: "Website development includes design, development, integrations, performance optimization, SEO, and ongoing improvements.",
   p2: "At Altiora Infotech, we build custom websites using modern technologies and scalable solutions tailored to your business goals.",
   coverHeading: "We Build",
-  capabilities: [
-    { label: "Business Websites", icon: Building2, detail: "Professional websites designed to build trust and generate leads" },
-    { label: "E-Commerce Stores", icon: ShoppingCart, detail: "High-converting online stores with secure payments and product management" },
-    { label: "Landing Pages", icon: MousePointerClick, detail: "Focused pages designed to turn visitors into leads and customers" },
-    { label: "Portfolio Websites", icon: Palette, detail: "Modern websites that showcase your work and build credibility" },
-    { label: "SaaS & Web Apps", icon: LayoutDashboard, detail: "Scalable applications with custom features, dashboards, and integrations" },
-    { label: "WordPress Websites", icon: Globe, detail: "Custom, responsive WordPress websites that are easy to manage" },
-  ] as WebDevCapability[],
+  capabilities,
+  coverage: capabilities,
 };
 
 export type WebDevService = { title: string; icon: LucideIcon; description: string; metric: string };

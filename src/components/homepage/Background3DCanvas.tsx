@@ -20,39 +20,39 @@ export default function Background3DCanvas() {
     }
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 0, 15);
+    const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 0, 14);
 
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
 
-    // Ambient Lighting for smooth 3D logo depth & glowing gold halo
+    // Studio Lighting setup for realistic metallic shine
     const ambientLight = new THREE.AmbientLight(0xffffff, 1.8);
     scene.add(ambientLight);
 
-    const pointLightBlue = new THREE.PointLight(0x3d72c9, 4.0, 45);
-    pointLightBlue.position.set(8, 8, 10);
+    const pointLightBlue = new THREE.PointLight(0x3d72c9, 5.0, 50);
+    pointLightBlue.position.set(10, 10, 10);
     scene.add(pointLightBlue);
 
-    const pointLightGold = new THREE.PointLight(0xd3ac3c, 3.5, 45);
-    pointLightGold.position.set(-8, -8, 10);
+    const pointLightGold = new THREE.PointLight(0xd3ac3c, 4.5, 50);
+    pointLightGold.position.set(-10, -10, 10);
     scene.add(pointLightGold);
 
-    // Ambient particle field
-    const particleCount = 450;
+    // Ambient particle field (Data Stream Particles)
+    const particleCount = 380;
     const particleGeometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
-    const goldColor = new THREE.Color("#c9a227");
-    const blueColor = new THREE.Color("#1c4fa1");
-    const slateColor = new THREE.Color("#a0a5b5");
+    const goldColor = new THREE.Color("#d3ac3c");
+    const blueColor = new THREE.Color("#3d72c9");
+    const slateColor = new THREE.Color("#94a3b8");
 
     for (let i = 0; i < particleCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 50;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 50;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 50;
+      positions[i * 3] = (Math.random() - 0.5) * 45;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 45;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 45;
 
       const mix = Math.random();
       let col = slateColor;
@@ -68,88 +68,100 @@ export default function Background3DCanvas() {
     particleGeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
     const particleMaterial = new THREE.PointsMaterial({
-      size: 0.11,
+      size: 0.1,
       vertexColors: true,
       transparent: true,
-      opacity: 0.35,
+      opacity: 0.3,
     });
 
     const particles = new THREE.Points(particleGeometry, particleMaterial);
     scene.add(particles);
 
     // -------------------------------------------------------------
-    // EXACT ALTIORA BRAND LOGO WITH SMOOTH SOLID 3D METALLIC BODY
+    // ALTIORA 3D APEX GROWTH EMBLEM & GYROSCOPIC DATA RINGS
     // -------------------------------------------------------------
-    // Outer triangular arrowhead contour
-    const logoShape = new THREE.Shape();
-    logoShape.moveTo(0, 3.0);
-    logoShape.lineTo(2.5, -2.2);
-    logoShape.lineTo(0, -1.0);
-    logoShape.lineTo(-2.5, -2.2);
-    logoShape.closePath();
+    const apexEngineGroup = new THREE.Group();
 
-    // Inner Arrow Cutout Hole
-    const arrowHole = new THREE.Path();
-    arrowHole.moveTo(0, 1.1);
-    arrowHole.lineTo(0.85, -0.3);
-    arrowHole.lineTo(0.28, -0.3);
-    arrowHole.lineTo(0.28, -1.14);
-    arrowHole.lineTo(-0.28, -1.14);
-    arrowHole.lineTo(-0.28, -0.3);
-    arrowHole.lineTo(-0.85, -0.3);
-    arrowHole.closePath();
-    logoShape.holes.push(arrowHole);
+    // 1. Custom 3D Apex Arrowhead Delta Shape (Extruded Altiora Growth Logo Crest)
+    const apexShape = new THREE.Shape();
+    apexShape.moveTo(0, 2.8);
+    apexShape.lineTo(2.2, -2.0);
+    apexShape.lineTo(0, -0.9);
+    apexShape.lineTo(-2.2, -2.0);
+    apexShape.closePath();
 
-    // Smooth 3D Extrusion Depth & Bevel Settings
+    // Inner Arrow Cutout
+    const innerHole = new THREE.Path();
+    innerHole.moveTo(0, 1.0);
+    innerHole.lineTo(0.75, -0.3);
+    innerHole.lineTo(0.25, -0.3);
+    innerHole.lineTo(0.25, -1.0);
+    innerHole.lineTo(-0.25, -1.0);
+    innerHole.lineTo(-0.25, -0.3);
+    innerHole.lineTo(-0.75, -0.3);
+    innerHole.closePath();
+    apexShape.holes.push(innerHole);
+
     const extrudeSettings = {
-      depth: 0.45,
+      depth: 0.5,
       bevelEnabled: true,
       bevelSegments: 5,
       steps: 1,
-      bevelSize: 0.08,
-      bevelThickness: 0.08,
+      bevelSize: 0.1,
+      bevelThickness: 0.1,
     };
 
-    const logoGeometry = new THREE.ExtrudeGeometry(logoShape, extrudeSettings);
-    logoGeometry.center();
+    const apexGeometry = new THREE.ExtrudeGeometry(apexShape, extrudeSettings);
+    apexGeometry.center();
 
-    // Clean 3D Emblem Group
-    const logoGroup = new THREE.Group();
-
-    // Smooth & Solid Metallic Royal Blue Body (No wireframe border lines!)
-    const bodyMat = new THREE.MeshStandardMaterial({
+    // Metallic Royal Blue Body
+    const apexMat = new THREE.MeshStandardMaterial({
       color: 0x163f85,
       emissive: 0x0a1f42,
-      emissiveIntensity: 0.35,
-      metalness: 0.85,
-      roughness: 0.18,
+      emissiveIntensity: 0.4,
+      metalness: 0.9,
+      roughness: 0.15,
       transparent: true,
-      opacity: 0.92,
+      opacity: 0.88,
       depthWrite: true,
     });
-    const bodyMesh = new THREE.Mesh(logoGeometry, bodyMat);
-    logoGroup.add(bodyMesh);
+    const apexMesh = new THREE.Mesh(apexGeometry, apexMat);
+    apexEngineGroup.add(apexMesh);
 
-    // Glowing Metallic Golden Halo Ring around the 3D Royal Blue Emblem (#d3ac3c)
-    const ringGeo = new THREE.TorusGeometry(3.6, 0.035, 16, 100);
-    const ringMat = new THREE.MeshStandardMaterial({
+    // 2. Inner Golden Telemetry Ring
+    const innerRingGeo = new THREE.TorusGeometry(3.4, 0.035, 16, 100);
+    const innerRingMat = new THREE.MeshStandardMaterial({
       color: 0xd3ac3c,
       emissive: 0xc9a227,
-      emissiveIntensity: 0.6,
-      metalness: 0.9,
+      emissiveIntensity: 0.7,
+      metalness: 0.95,
       roughness: 0.1,
       transparent: true,
       opacity: 0.55,
     });
-    const ringMesh = new THREE.Mesh(ringGeo, ringMat);
-    ringMesh.rotation.x = Math.PI / 2.3;
-    logoGroup.add(ringMesh);
+    const innerRing = new THREE.Mesh(innerRingGeo, innerRingMat);
+    innerRing.rotation.x = Math.PI / 2.3;
+    apexEngineGroup.add(innerRing);
 
-    // Initially hidden in hero section, standing straight upright (rotation.x = 0, rotation.z = 0)
-    logoGroup.scale.set(0, 0, 0);
-    logoGroup.position.set(0, 0, -2);
-    logoGroup.rotation.set(0, 0, 0);
-    scene.add(logoGroup);
+    // 3. Outer Blue Data Orbit Ring
+    const outerRingGeo = new THREE.TorusGeometry(4.4, 0.025, 16, 100);
+    const outerRingMat = new THREE.MeshStandardMaterial({
+      color: 0x3d72c9,
+      emissive: 0x163f85,
+      emissiveIntensity: 0.5,
+      metalness: 0.9,
+      roughness: 0.2,
+      transparent: true,
+      opacity: 0.4,
+    });
+    const outerRing = new THREE.Mesh(outerRingGeo, outerRingMat);
+    outerRing.rotation.y = Math.PI / 2.5;
+    apexEngineGroup.add(outerRing);
+
+    // Align gracefully to the Right Side
+    apexEngineGroup.position.set(4.2, 0, -2);
+    apexEngineGroup.scale.set(0.8, 0.8, 0.8);
+    scene.add(apexEngineGroup);
 
     // Scroll tracking
     let targetScrollY = 0;
@@ -168,9 +180,18 @@ export default function Background3DCanvas() {
       renderer.setSize(width, height);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
+
+      if (width < 768) {
+        apexEngineGroup.position.set(0, -2.2, -4);
+        apexEngineGroup.scale.set(0.5, 0.5, 0.5);
+      } else {
+        apexEngineGroup.position.set(4.2, 0, -2);
+        apexEngineGroup.scale.set(0.8, 0.8, 0.8);
+      }
     };
 
     window.addEventListener("resize", handleResize);
+    handleResize();
 
     let animationFrameId: number;
 
@@ -178,42 +199,19 @@ export default function Background3DCanvas() {
       if (!prefersReducedMotion) {
         currentScrollY += (targetScrollY - currentScrollY) * 0.05;
 
-        particles.rotation.y += 0.0005;
+        particles.rotation.y += 0.0004;
 
         const maxScroll = Math.max(document.body.scrollHeight - window.innerHeight, 1);
         const scrollProgress = Math.min(Math.max(currentScrollY / maxScroll, 0), 1);
 
-        // 1. HERO SECTION HIDE & APPEARANCE (Scroll 0 -> 180px hidden, then scale up)
-        const heroThreshold = 180;
-        if (currentScrollY < heroThreshold) {
-          const heroProgress = Math.max(currentScrollY / heroThreshold, 0);
-          const currentScale = heroProgress * 0.25;
-          logoGroup.scale.set(currentScale, currentScale, currentScale);
-          bodyMat.opacity = heroProgress * 0.2;
-          ringMat.opacity = heroProgress * 0.12;
-        } else {
-          // Beyond Hero: grow from small to full size (1.5) standing straight upright!
-          const scrollFactor = (currentScrollY - heroThreshold) / 400;
-          const scaleTarget = Math.min(0.25 + scrollFactor * 1.25, 1.5);
-          logoGroup.scale.set(scaleTarget, scaleTarget, scaleTarget);
+        // 360-Degree Gyroscopic Rotation synchronized with scroll
+        apexMesh.rotation.y = scrollProgress * Math.PI * 4 + Date.now() * 0.0004;
+        innerRing.rotation.z += 0.002;
+        outerRing.rotation.x += 0.0015;
 
-          bodyMat.opacity = 0.92;
-          ringMat.opacity = 0.55;
-        }
-
-        // 2. UPRIGHT STANDING 3D EMBLEM + 360-DEGREE Y-AXIS ROTATION ON SCROLL
-        logoGroup.rotation.x = 0;
-        logoGroup.rotation.z = 0;
-        logoGroup.rotation.y = scrollProgress * Math.PI * 4 + Date.now() * 0.0003;
-
-        ringMesh.rotation.z += 0.002;
-
-        // 3. HORIZONTAL WEAVING MOTION: Center -> Right -> Left -> Right -> Center
-        const weaveX = Math.sin(scrollProgress * Math.PI * 3.5) * 4.8;
-        const weaveY = -scrollProgress * 3.5 + Math.cos(scrollProgress * Math.PI * 2) * 1.0;
-
-        logoGroup.position.x = weaveX;
-        logoGroup.position.y = weaveY;
+        // Smooth subtle vertical float tracking scroll depth
+        const floatY = Math.sin(scrollProgress * Math.PI * 3) * 0.7 - scrollProgress * 1.2;
+        apexEngineGroup.position.y = floatY;
       }
 
       renderer.render(scene, camera);
@@ -229,10 +227,12 @@ export default function Background3DCanvas() {
 
       particleGeometry.dispose();
       particleMaterial.dispose();
-      logoGeometry.dispose();
-      bodyMat.dispose();
-      ringGeo.dispose();
-      ringMat.dispose();
+      apexGeometry.dispose();
+      apexMat.dispose();
+      innerRingGeo.dispose();
+      innerRingMat.dispose();
+      outerRingGeo.dispose();
+      outerRingMat.dispose();
       renderer.dispose();
 
       if (renderer.domElement.parentNode === container) {

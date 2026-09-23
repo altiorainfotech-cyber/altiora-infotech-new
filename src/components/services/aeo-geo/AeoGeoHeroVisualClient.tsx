@@ -1,9 +1,111 @@
 "use client";
 
-import dynamic from "next/dynamic";
-
-const AeoGeoHeroVisual = dynamic(() => import("@/components/services/aeo-geo/AeoGeoHeroVisual"), { ssr: false });
+import { useEffect, useRef } from "react";
+import * as THREE from "three";
 
 export function AeoGeoHeroVisualClient() {
-  return <AeoGeoHeroVisual />;
+  const mountRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = mountRef.current;
+    if (!container) return;
+
+    const width = container.clientWidth || 500;
+    const height = container.clientHeight || 500;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+    camera.position.set(0, 0, 7);
+
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    container.appendChild(renderer.domElement);
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+    scene.add(ambientLight);
+
+    const pointLight = new THREE.PointLight(0x3b82f6, 2.5, 20);
+    pointLight.position.set(4, 4, 4);
+    scene.add(pointLight);
+
+    // Dodecahedron representing AI Neural Mesh
+    const geometry = new THREE.DodecahedronGeometry(1.7, 1);
+    const material = new THREE.MeshStandardMaterial({
+      color: 0x1d4ed8,
+      roughness: 0.1,
+      metalness: 0.9,
+      wireframe: true,
+    });
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+
+    // Inner gold core
+    const coreGeo = new THREE.SphereGeometry(0.85, 32, 32);
+    const coreMat = new THREE.MeshStandardMaterial({
+      color: 0xd3ac3c,
+      roughness: 0.2,
+      metalness: 0.8,
+    });
+    const coreMesh = new THREE.Mesh(coreGeo, coreMat);
+    scene.add(coreMesh);
+
+    // Floating particles
+    const particleCount = 100;
+    const particleGeo = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount * 3; i++) {
+      positions[i] = (Math.random() - 0.5) * 10;
+    }
+    particleGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    const particleMat = new THREE.PointsMaterial({
+      size: 0.05,
+      color: 0x3b82f6,
+      transparent: true,
+      opacity: 0.7,
+    });
+    const particles = new THREE.Points(particleGeo, particleMat);
+    scene.add(particles);
+
+    let animationFrameId: number;
+
+    const animate = () => {
+      animationFrameId = requestAnimationFrame(animate);
+      mesh.rotation.x += 0.005;
+      mesh.rotation.y += 0.007;
+      coreMesh.rotation.y -= 0.004;
+      particles.rotation.y -= 0.002;
+      renderer.render(scene, camera);
+    };
+
+    animate();
+
+    const handleResize = () => {
+      if (!container) return;
+      const w = container.clientWidth;
+      const h = container.clientHeight;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      cancelAnimationFrame(animationFrameId);
+      if (container.contains(renderer.domElement)) {
+        container.removeChild(renderer.domElement);
+      }
+      geometry.dispose();
+      material.dispose();
+      coreGeo.dispose();
+      coreMat.dispose();
+      particleGeo.dispose();
+      particleMat.dispose();
+      renderer.dispose();
+    };
+  }, []);
+
+  return <div ref={mountRef} className="w-full h-full min-h-[380px] sm:min-h-[460px] flex items-center justify-center" />;
 }

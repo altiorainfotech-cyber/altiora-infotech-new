@@ -3,8 +3,10 @@ import { AboutClientBackground } from "@/components/about/AboutClientBackground"
 import { AboutHero } from "@/components/about/AboutHero";
 import { AboutMetrics } from "@/components/about/AboutMetrics";
 import { WhatWeDo } from "@/components/about/WhatWeDo";
+import { AboutCapabilityOrbit } from "@/components/about/AboutCapabilityOrbit";
 import { VisionMission } from "@/components/about/VisionMission";
 import { HowWeWork } from "@/components/about/HowWeWork";
+import { AgencyComparisonMatrix } from "@/components/about/AgencyComparisonMatrix";
 import { ExperienceImpact } from "@/components/about/ExperienceImpact";
 import { WhyAltioraSection } from "@/components/about/WhyAltioraSection";
 import { AboutCTA } from "@/components/about/AboutCTA";
@@ -35,8 +37,10 @@ export default function AboutPage() {
         <AboutHero />
         <AboutMetrics />
         <WhatWeDo />
+        <AboutCapabilityOrbit />
         <VisionMission />
         <HowWeWork />
+        <AgencyComparisonMatrix />
         <ExperienceImpact />
         <WhyAltioraSection />
         <AboutCTA />

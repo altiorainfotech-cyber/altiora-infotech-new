@@ -5,7 +5,6 @@ export const SITE_NAME = "Altiora Infotech";
 
 export const NAV_LINKS = [
   { label: "Services", href: "/services" },
-  { label: "Solutions", href: "/solutions" },
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
   { label: "Contact Us", href: "/contact" },

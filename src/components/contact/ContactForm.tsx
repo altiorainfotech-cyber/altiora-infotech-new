@@ -8,7 +8,6 @@ import {
   Phone,
   Building,
   FileText,
-  ShieldCheck,
   CheckCircle2,
   ArrowRight,
   ArrowLeft,
@@ -86,7 +85,6 @@ export function ContactForm() {
       return;
     }
 
-    // Check privacy consent requirement
     if (!formData.privacyConsent) {
       setErrors((prev) => ({ ...prev, privacyConsent: "Please Accept Privacy Terms" }));
       return;
@@ -95,7 +93,6 @@ export function ContactForm() {
     setIsSubmitting(true);
     setErrors({});
 
-    // Simulate submission flow
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
@@ -110,6 +107,17 @@ export function ContactForm() {
     <div className="relative overflow-hidden rounded-3xl border border-ink/12 bg-white/95 p-6 sm:p-10 shadow-2xl backdrop-blur-2xl transition-all">
       {/* Metallic Gradient Header Bar */}
       <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-blue-600 via-blue-500 to-gold-400" />
+
+      {/* Visual Metaphor Progress Bar */}
+      <div className="mb-6 flex items-center justify-between text-[10px] font-mono font-bold text-muted border-b border-ink/8 pb-3">
+        <span className={step === 1 ? "text-blue-600 font-extrabold" : "text-emerald-600"}>01. IDEA</span>
+        <ArrowRight className="h-3 w-3 text-gold-500" />
+        <span className={step === 2 ? "text-blue-600 font-extrabold" : "text-muted"}>02. DETAILS</span>
+        <ArrowRight className="h-3 w-3 text-gold-500" />
+        <span>03. STRATEGY</span>
+        <ArrowRight className="h-3 w-3 text-gold-500" />
+        <span>04. CONVERSATION</span>
+      </div>
 
       {/* Title */}
       <div className="mb-8">

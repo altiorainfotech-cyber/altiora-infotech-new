@@ -33,20 +33,23 @@ export const mobileAppHero = {
 
 export type AppCapability = { label: string; icon: LucideIcon; detail: string };
 
+const capabilities: AppCapability[] = [
+  { label: "iOS Apps", icon: Smartphone, detail: "Swift & SwiftUI" },
+  { label: "Android Apps", icon: Bot, detail: "Kotlin & Jetpack Compose" },
+  { label: "React Native Apps", icon: Layers, detail: "Cross-platform development" },
+  { label: "Flutter Apps", icon: Blocks, detail: "Multi-platform applications" },
+  { label: "Backend & APIs", icon: Server, detail: "REST, GraphQL & cloud infrastructure" },
+  { label: "Mobile UI/UX", icon: Palette, detail: "Research-driven app experiences" },
+];
+
 export const mobileAppOverview = {
   eyebrow: "Service Overview",
   heading: "What Are Mobile App Development Services?",
   p1: "Mobile app development covers strategy, UI/UX design, development, API integration, testing, deployment, and ongoing optimization.",
   p2: "At Altiora Infotech, we build scalable mobile solutions tailored to your business goals, users, and technology needs.",
   coverHeading: "We Build",
-  capabilities: [
-    { label: "iOS Apps", icon: Smartphone, detail: "Swift & SwiftUI" },
-    { label: "Android Apps", icon: Bot, detail: "Kotlin & Jetpack Compose" },
-    { label: "React Native Apps", icon: Layers, detail: "Cross-platform development" },
-    { label: "Flutter Apps", icon: Blocks, detail: "Multi-platform applications" },
-    { label: "Backend & APIs", icon: Server, detail: "REST, GraphQL & cloud infrastructure" },
-    { label: "Mobile UI/UX", icon: Palette, detail: "Research-driven app experiences" },
-  ] as AppCapability[],
+  capabilities,
+  coverage: capabilities,
 };
 
 export type AppService = { title: string; icon: LucideIcon; description: string; metric: string };

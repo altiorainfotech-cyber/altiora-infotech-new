@@ -28,20 +28,23 @@ export const videoProductionHero = {
 
 export type VideoCapability = { label: string; icon: LucideIcon; detail: string };
 
+const capabilities: VideoCapability[] = [
+  { label: "Brand Films", icon: Film, detail: "Tell your brand story through cinematic video" },
+  { label: "Social Media Reels", icon: Camera, detail: "Create engaging short-form content for Instagram, TikTok, and YouTube Shorts" },
+  { label: "Explainer Animation", icon: Wand2, detail: "Simplify complex products and ideas through engaging animation" },
+  { label: "Testimonial Videos", icon: Heart, detail: "Build trust with authentic customer stories and experiences" },
+  { label: "Product Demos", icon: Play, detail: "Showcase your product features, benefits, and use cases" },
+  { label: "Corporate Films", icon: Briefcase, detail: "Create professional videos for training, recruitment, culture, and business communication" },
+];
+
 export const videoProductionOverview = {
   eyebrow: "Service Overview",
   heading: "What Are Video Production Services?",
   p1: "Video production covers concept development, scripting, filming, animation, editing, and final delivery.",
   p2: "At Altiora Infotech, we create strategic video content designed for your brand, audience, and marketing goals.",
   coverHeading: "We Produce",
-  capabilities: [
-    { label: "Brand Films", icon: Film, detail: "Tell your brand story through cinematic video" },
-    { label: "Social Media Reels", icon: Camera, detail: "Create engaging short-form content for Instagram, TikTok, and YouTube Shorts" },
-    { label: "Explainer Animation", icon: Wand2, detail: "Simplify complex products and ideas through engaging animation" },
-    { label: "Testimonial Videos", icon: Heart, detail: "Build trust with authentic customer stories and experiences" },
-    { label: "Product Demos", icon: Play, detail: "Showcase your product features, benefits, and use cases" },
-    { label: "Corporate Films", icon: Briefcase, detail: "Create professional videos for training, recruitment, culture, and business communication" },
-  ] as VideoCapability[],
+  capabilities,
+  coverage: capabilities,
 };
 
 export type VideoService = { title: string; icon: LucideIcon; description: string; metric: string };

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { Send, CheckCircle2, Sparkles, Mail, ShieldCheck } from "lucide-react";
+import { Send, CheckCircle2, Sparkles, Mail, ShieldCheck, ArrowRight } from "lucide-react";
 
 export function BlogNewsletterCTA() {
   const [email, setEmail] = useState("");
@@ -35,7 +35,7 @@ export function BlogNewsletterCTA() {
               <div className="lg:col-span-7">
                 <div className="inline-flex items-center gap-2 rounded-full border border-gold-400/30 bg-gold-500/10 px-3.5 py-1.5 text-xs font-extrabold text-gold-300 backdrop-blur-md">
                   <Sparkles className="h-3.5 w-3.5 text-gold-400 fill-gold-400" />
-                  <span>Stay Ahead of the Curve</span>
+                  <span>Knowledge Signal Dispatch</span>
                 </div>
 
                 <h2 className="mt-4 text-2xl sm:text-4xl font-black tracking-tight text-white leading-tight">
@@ -43,8 +43,17 @@ export function BlogNewsletterCTA() {
                 </h2>
 
                 <p className="mt-3 text-sm sm:text-base text-blue-100/80 max-w-xl font-medium leading-relaxed">
-                  Join 14,000+ digital leaders, tech architects, and growth marketers receiving actionable breakdown guides every Tuesday. No spam ever.
+                  Join 14,000+ digital leaders, tech architects, and growth marketers receiving actionable breakdown guides every Tuesday.
                 </p>
+
+                {/* Knowledge Signal Flow Metaphor */}
+                <div className="mt-5 flex items-center gap-2 text-xs font-mono font-bold text-gold-400">
+                  <span className="px-2.5 py-1 rounded bg-white/10 border border-white/10">KNOWLEDGE</span>
+                  <ArrowRight className="h-3.5 w-3.5 text-gold-400 animate-pulse" />
+                  <span className="px-2.5 py-1 rounded bg-white/10 border border-white/10">DISPATCH</span>
+                  <ArrowRight className="h-3.5 w-3.5 text-gold-400 animate-pulse" />
+                  <span className="px-2.5 py-1 rounded bg-white/10 border border-white/10 text-emerald-400">INBOX</span>
+                </div>
 
                 <div className="mt-6 flex items-center gap-4 text-xs font-semibold text-blue-200/90">
                   <div className="flex items-center gap-1.5">

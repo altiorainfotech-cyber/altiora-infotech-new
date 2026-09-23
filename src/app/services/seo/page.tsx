@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SeoClientBackground } from "@/components/services/seo/SeoClientBackground";
 import { SeoHero } from "@/components/services/seo/SeoHero";
 import { SeoOverview } from "@/components/services/seo/SeoOverview";
+import { SeoServicesGrid } from "@/components/services/seo/SeoServicesGrid";
 import { SeoWhyChoose } from "@/components/services/seo/SeoWhyChoose";
 import { SeoProcess } from "@/components/services/seo/SeoProcess";
 import { SeoCTA } from "@/components/services/seo/SeoCTA";
@@ -31,6 +32,7 @@ export default function SeoServicesPage() {
       <div className="relative z-10">
         <SeoHero />
         <SeoOverview />
+        <SeoServicesGrid />
         <SeoWhyChoose />
         <SeoProcess />
         <SeoCTA />

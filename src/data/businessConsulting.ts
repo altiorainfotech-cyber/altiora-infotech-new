@@ -28,20 +28,23 @@ export const businessConsultingHero = {
 
 export type ConsultingCapability = { label: string; icon: LucideIcon; detail: string };
 
+const capabilities: ConsultingCapability[] = [
+  { label: "Business Strategy", icon: Compass, detail: "Define direction, positioning, goals, and growth plans" },
+  { label: "Operational Excellence", icon: Settings, detail: "Improve processes, workflows, efficiency, and scalability" },
+  { label: "Financial Advisory", icon: DollarSign, detail: "Optimize costs, revenue models, budgets, and financial planning" },
+  { label: "Marketing & Growth", icon: TrendingUp, detail: "Develop strategies for customer acquisition, retention, and expansion" },
+  { label: "Digital Transformation", icon: Cpu, detail: "Modernize technology, workflows, automation, and digital operations" },
+  { label: "Leadership & Team", icon: Users, detail: "Strengthen leadership, team alignment, performance, and organizational growth" },
+];
+
 export const businessConsultingOverview = {
   eyebrow: "Service Overview",
   heading: "What Are Business Consulting Services?",
   p1: "Business consulting provides strategic guidance to help businesses solve challenges, improve performance, and plan sustainable growth.",
   p2: "At Altiora Infotech, we combine strategy, data, technology, and hands-on support to help businesses move from uncertainty to action.",
   coverHeading: "We Help With",
-  capabilities: [
-    { label: "Business Strategy", icon: Compass, detail: "Define direction, positioning, goals, and growth plans" },
-    { label: "Operational Excellence", icon: Settings, detail: "Improve processes, workflows, efficiency, and scalability" },
-    { label: "Financial Advisory", icon: DollarSign, detail: "Optimize costs, revenue models, budgets, and financial planning" },
-    { label: "Marketing & Growth", icon: TrendingUp, detail: "Develop strategies for customer acquisition, retention, and expansion" },
-    { label: "Digital Transformation", icon: Cpu, detail: "Modernize technology, workflows, automation, and digital operations" },
-    { label: "Leadership & Team", icon: Users, detail: "Strengthen leadership, team alignment, performance, and organizational growth" },
-  ] as ConsultingCapability[],
+  capabilities,
+  coverage: capabilities,
 };
 
 export type ConsultingService = { title: string; icon: LucideIcon; description: string; metric: string };

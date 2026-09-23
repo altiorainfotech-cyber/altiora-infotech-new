@@ -30,22 +30,25 @@ export const aeoGeoHero = {
 
 export type AeoGeoCapability = { label: string; icon: LucideIcon; detail: string };
 
+const capabilities: AeoGeoCapability[] = [
+  { label: "ChatGPT", icon: Bot, detail: "Improve your chances of being referenced in AI-generated answers" },
+  { label: "Google AI Overviews", icon: Sparkles, detail: "Optimize content for Google's AI-powered search results" },
+  { label: "Perplexity", icon: Cpu, detail: "Build content and authority signals that support AI citations" },
+  { label: "Bing Copilot", icon: MonitorSmartphone, detail: "Improve visibility across Microsoft's AI-powered search experience" },
+  { label: "Voice Search", icon: Mic, detail: "Optimize for conversational and question-based queries" },
+  { label: "Featured Snippets", icon: Quote, detail: "Structure content to capture direct-answer opportunities" },
+  { label: "Schema & Structured Data", icon: Braces, detail: "Help search engines and AI systems understand your content" },
+  { label: "Entity & Authority Building", icon: Award, detail: "Strengthen your brand's credibility and online presence" },
+];
+
 export const aeoGeoOverview = {
   eyebrow: "Service Overview",
   heading: "What Are AEO & GEO Services?",
   p1: "AEO and GEO services optimize your website and content to help AI-powered search engines understand, reference, and recommend your brand.",
   p2: "At Altiora Infotech, we combine content strategy, structured data, entity authority, and AI visibility monitoring to strengthen your presence across modern search.",
   coverHeading: "We Optimize For",
-  capabilities: [
-    { label: "ChatGPT", icon: Bot, detail: "Improve your chances of being referenced in AI-generated answers" },
-    { label: "Google AI Overviews", icon: Sparkles, detail: "Optimize content for Google's AI-powered search results" },
-    { label: "Perplexity", icon: Cpu, detail: "Build content and authority signals that support AI citations" },
-    { label: "Bing Copilot", icon: MonitorSmartphone, detail: "Improve visibility across Microsoft's AI-powered search experience" },
-    { label: "Voice Search", icon: Mic, detail: "Optimize for conversational and question-based queries" },
-    { label: "Featured Snippets", icon: Quote, detail: "Structure content to capture direct-answer opportunities" },
-    { label: "Schema & Structured Data", icon: Braces, detail: "Help search engines and AI systems understand your content" },
-    { label: "Entity & Authority Building", icon: Award, detail: "Strengthen your brand's credibility and online presence" },
-  ] as AeoGeoCapability[],
+  capabilities,
+  coverage: capabilities,
 };
 
 export type AiPlatform = { name: string; icon: LucideIcon; description: string; services: string[] };

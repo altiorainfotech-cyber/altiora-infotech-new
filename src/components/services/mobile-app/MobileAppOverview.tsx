@@ -1,18 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { Layers, Smartphone } from "lucide-react";
+import { Layers, TrendingUp } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { mobileAppOverview } from "@/data/mobileApp";
-import { MobileAppCoverageGrid } from "./MobileAppCoverageGrid";
-
-const overviewImage =
-  "https://images.unsplash.com/photo-1758598304354-0a86fd5d62c2?auto=format&fit=crop&w=1200&h=900&q=80";
+import { mobileAppImages } from "@/data/mobileAppImages";
+import { MobileAppJourney } from "./MobileAppJourney";
+import { MobileAppPerformanceTracking } from "./MobileAppPerformanceTracking";
+import { MobileAppEcosystemHub } from "./MobileAppEcosystemHub";
 
 export function MobileAppOverview() {
   return (
-    <section className="relative overflow-hidden bg-transparent py-14 sm:py-20" aria-labelledby="mobileapp-overview-heading">
+    <section className="relative overflow-hidden bg-transparent py-14 sm:py-20" aria-labelledby="mobile-app-overview-heading">
       <div className="pointer-events-none absolute -left-40 top-1/3 -z-10 h-96 w-96 rounded-full bg-blue-500/10 blur-[100px]" />
 
       <Container>
@@ -26,7 +26,7 @@ export function MobileAppOverview() {
             </Reveal>
 
             <Reveal delay={0.05}>
-              <h2 id="mobileapp-overview-heading" className="mt-4 text-3xl font-black tracking-tight text-ink sm:text-4xl leading-[1.15]">
+              <h2 id="mobile-app-overview-heading" className="mt-4 text-3xl font-black tracking-tight text-ink sm:text-4xl leading-[1.15]">
                 {mobileAppOverview.heading}
               </h2>
             </Reveal>
@@ -42,33 +42,39 @@ export function MobileAppOverview() {
               <div className="mt-6 relative overflow-hidden rounded-2xl border border-ink/8 shadow-lg">
                 <div className="relative aspect-[16/10] w-full">
                   <Image
-                    src={overviewImage}
-                    alt="Mobile app experience on a smartphone"
+                    src={mobileAppImages.overview}
+                    alt="Mobile app analytics and performance dashboard"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 500px"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/10 to-transparent" />
                   <div className="absolute bottom-3 left-3 flex items-center gap-2 rounded-lg border border-ink/10 bg-white/90 px-3 py-1.5 text-xs font-bold text-ink shadow-sm backdrop-blur-md">
-                    <Smartphone className="h-4 w-4 text-blue-600" />
-                    <span>Built for Real-World Devices</span>
+                    <TrendingUp className="h-4 w-4 text-blue-600" />
+                    <span>99.9% Crash-Free Telemetry Active</span>
                   </div>
                 </div>
               </div>
             </Reveal>
           </div>
 
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 space-y-8">
             <Reveal delay={0.08}>
-              <span className="text-xs font-black uppercase tracking-wider text-blue-800">
-                {mobileAppOverview.coverHeading}
-              </span>
+              <MobileAppEcosystemHub />
             </Reveal>
-
-            <div className="mt-4">
-              <MobileAppCoverageGrid />
-            </div>
           </div>
+        </div>
+
+        <div className="mt-16">
+          <Reveal delay={0.1}>
+            <MobileAppJourney />
+          </Reveal>
+        </div>
+
+        <div className="mt-12">
+          <Reveal delay={0.12}>
+            <MobileAppPerformanceTracking />
+          </Reveal>
         </div>
       </Container>
     </section>
