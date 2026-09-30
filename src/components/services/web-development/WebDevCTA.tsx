@@ -24,17 +24,17 @@ export function WebDevCTA() {
         <Reveal>
           <TiltCard
             glowColor="gold"
-            className="group overflow-hidden border border-ink/8 shadow-[0_25px_60px_-15px_rgba(20,21,26,0.1)] transition-shadow duration-300 hover:shadow-[0_30px_70px_-15px_rgba(28,79,161,0.18)]"
+            className="group overflow-hidden border border-blue-900/15 shadow-[0_25px_60px_-15px_rgba(20,21,26,0.08)] transition-shadow duration-300 hover:shadow-[0_30px_70px_-15px_rgba(28,79,161,0.15)]"
           >
             <div className="relative -m-6 overflow-hidden rounded-2xl sm:-m-8">
-              <div className="absolute inset-3 z-0 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950 to-ink sm:inset-5 text-white" />
+              <div className="absolute inset-3 z-0 rounded-2xl bg-gradient-to-br from-white/95 via-surface/90 to-blue-50/40 border border-blue-900/15 sm:inset-5 text-ink shadow-2xl backdrop-blur-2xl" />
 
-              <div className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-400/20 blur-[90px]" />
-              <div className="pointer-events-none absolute -bottom-24 right-10 h-72 w-72 rounded-full bg-gold-400/20 blur-[90px]" />
+              <div className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-400/15 blur-[90px]" />
+              <div className="pointer-events-none absolute -bottom-24 right-10 h-72 w-72 rounded-full bg-gold-400/15 blur-[90px]" />
 
-              <div className="relative z-10 p-8 text-center sm:p-16 text-white">
+              <div className="relative z-10 p-8 text-center sm:p-16 text-ink">
                 <motion.div
-                  className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-blue-500 via-indigo-600 to-blue-700 text-white shadow-2xl border-2 border-white/40"
+                  className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-blue-600 via-indigo-700 to-blue-900 text-white shadow-xl border-2 border-white/80"
                   style={{
                     scale: useTransform(smoothProgress, [0, 1], [0.75, 1.1]),
                     rotate: useTransform(smoothProgress, [0, 1], [-15, 0]),
@@ -43,31 +43,31 @@ export function WebDevCTA() {
                   <Code2 className="h-10 w-10 text-white" />
                 </motion.div>
 
-                <div className="flex flex-wrap items-center justify-center gap-2 mb-6 font-mono text-[11px] font-bold text-blue-300">
-                  <span className="rounded-full bg-white/10 px-3 py-1 border border-white/15">UX DESIGN</span>
-                  <ArrowRight className="h-3 w-3 text-gold-400" />
-                  <span className="rounded-full bg-white/10 px-3 py-1 border border-white/15">NEXT.JS BUILD</span>
-                  <ArrowRight className="h-3 w-3 text-gold-400" />
-                  <span className="rounded-full bg-white/10 px-3 py-1 border border-white/15">PAGESPEED 100</span>
-                  <ArrowRight className="h-3 w-3 text-gold-400" />
-                  <span className="rounded-full bg-white/10 px-3 py-1 border border-white/15">SECURITY</span>
-                  <ArrowRight className="h-3 w-3 text-gold-400" />
-                  <span className="rounded-full bg-blue-400 text-ink font-black px-3.5 py-1">PRODUCT GROWTH</span>
+                <div className="flex flex-wrap items-center justify-center gap-2 mb-6 font-mono text-[11px] font-bold text-blue-900">
+                  <span className="rounded-full bg-white/90 px-3 py-1 border border-blue-900/15 shadow-2xs">UX DESIGN</span>
+                  <ArrowRight className="h-3 w-3 text-gold-600" />
+                  <span className="rounded-full bg-white/90 px-3 py-1 border border-blue-900/15 shadow-2xs">NEXT.JS BUILD</span>
+                  <ArrowRight className="h-3 w-3 text-gold-600" />
+                  <span className="rounded-full bg-white/90 px-3 py-1 border border-blue-900/15 shadow-2xs">PAGESPEED 100</span>
+                  <ArrowRight className="h-3 w-3 text-gold-600" />
+                  <span className="rounded-full bg-white/90 px-3 py-1 border border-blue-900/15 shadow-2xs">SECURITY</span>
+                  <ArrowRight className="h-3 w-3 text-gold-600" />
+                  <span className="rounded-full bg-blue-900 text-white font-black px-3.5 py-1 shadow-2xs">PRODUCT GROWTH</span>
                 </div>
 
-                <div className="inline-flex items-center gap-2 rounded-full border border-blue-400/40 bg-blue-400/10 px-4 py-1.5 text-xs font-black text-blue-300 shadow-2xs backdrop-blur-md">
-                  <Sparkles className="h-4 w-4 text-blue-400" />
+                <div className="inline-flex items-center gap-2 rounded-full border border-blue-900/20 bg-blue-50/80 px-4 py-1.5 text-xs font-black text-blue-900 shadow-2xs backdrop-blur-md">
+                  <Sparkles className="h-4 w-4 text-blue-600" />
                   <span>Engineering Payoff</span>
                 </div>
 
                 <h2
                   id="web-dev-cta-heading"
-                  className="mx-auto mt-5 max-w-2xl text-3xl font-black tracking-tight text-white sm:text-4xl text-balance leading-tight"
+                  className="mx-auto mt-5 max-w-2xl text-3xl font-black tracking-tight text-ink sm:text-4xl text-balance leading-tight"
                 >
                   {webDevCta.heading}
                 </h2>
 
-                <p className="mx-auto mt-4 max-w-xl text-sm sm:text-base font-medium leading-relaxed text-white/80 text-balance">
+                <p className="mx-auto mt-4 max-w-xl text-sm sm:text-base font-medium leading-relaxed text-muted text-balance">
                   {webDevCta.description}
                 </p>
 
@@ -81,14 +81,14 @@ export function WebDevCTA() {
                   <Button
                     href={webDevCta.secondaryCta.href}
                     variant="secondary"
-                    className="px-9 py-4 text-base font-extrabold bg-white text-ink hover:bg-slate-100"
+                    className="px-9 py-4 text-base font-extrabold bg-white text-ink hover:bg-slate-50 border border-blue-900/15"
                   >
                     {webDevCta.secondaryCta.label}
                   </Button>
                 </div>
               </div>
 
-              <div className="pointer-events-none absolute inset-x-10 bottom-0 h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent" />
+              <div className="pointer-events-none absolute inset-x-10 bottom-0 h-1 bg-gradient-to-r from-transparent via-blue-600 to-transparent" />
             </div>
           </TiltCard>
         </Reveal>

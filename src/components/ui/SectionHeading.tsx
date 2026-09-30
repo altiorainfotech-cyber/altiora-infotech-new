@@ -30,7 +30,7 @@ export function SectionHeading({
       <h2
         id={headingId}
         className={cn(
-          "text-[clamp(1.75rem,3vw,2.75rem)] font-semibold leading-[1.15] tracking-tight text-balance",
+          "font-display text-[clamp(1.85rem,3.2vw,2.9rem)] font-bold leading-[1.12] tracking-tight text-balance",
           tone === "dark" ? "text-white" : "text-ink"
         )}
       >

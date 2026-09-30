@@ -24,17 +24,17 @@ export function AeoGeoCTA() {
         <Reveal>
           <TiltCard
             glowColor="gold"
-            className="group overflow-hidden border border-ink/8 shadow-[0_25px_60px_-15px_rgba(20,21,26,0.1)] transition-shadow duration-300 hover:shadow-[0_30px_70px_-15px_rgba(139,92,246,0.18)]"
+            className="group overflow-hidden border border-blue-900/15 shadow-[0_25px_60px_-15px_rgba(20,21,26,0.08)] transition-shadow duration-300 hover:shadow-[0_30px_70px_-15px_rgba(28,79,161,0.15)]"
           >
             <div className="relative -m-6 overflow-hidden rounded-2xl sm:-m-8">
-              <div className="absolute inset-3 z-0 rounded-2xl bg-gradient-to-br from-slate-900 via-purple-950 to-ink sm:inset-5 text-white" />
+              <div className="absolute inset-3 z-0 rounded-2xl bg-gradient-to-br from-white/95 via-surface/90 to-blue-50/40 border border-blue-900/15 sm:inset-5 text-ink shadow-2xl backdrop-blur-2xl" />
 
-              <div className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-purple-400/20 blur-[90px]" />
-              <div className="pointer-events-none absolute -bottom-24 right-10 h-72 w-72 rounded-full bg-gold-400/20 blur-[90px]" />
+              <div className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-purple-400/15 blur-[90px]" />
+              <div className="pointer-events-none absolute -bottom-24 right-10 h-72 w-72 rounded-full bg-gold-400/15 blur-[90px]" />
 
-              <div className="relative z-10 p-8 text-center sm:p-16 text-white">
+              <div className="relative z-10 p-8 text-center sm:p-16 text-ink">
                 <motion.div
-                  className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-purple-400 via-pink-500 to-purple-600 text-ink shadow-2xl border-2 border-white/40"
+                  className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 text-white shadow-xl border-2 border-white/80"
                   style={{
                     scale: useTransform(smoothProgress, [0, 1], [0.75, 1.1]),
                     rotate: useTransform(smoothProgress, [0, 1], [-15, 0]),
@@ -43,52 +43,52 @@ export function AeoGeoCTA() {
                   <Cpu className="h-10 w-10 text-white" />
                 </motion.div>
 
-                <div className="flex flex-wrap items-center justify-center gap-2 mb-6 font-mono text-[11px] font-bold text-purple-300">
-                  <span className="rounded-full bg-white/10 px-3 py-1 border border-white/15">ENTITY</span>
-                  <ArrowRight className="h-3 w-3 text-gold-400" />
-                  <span className="rounded-full bg-white/10 px-3 py-1 border border-white/15">SCHEMA</span>
-                  <ArrowRight className="h-3 w-3 text-gold-400" />
-                  <span className="rounded-full bg-white/10 px-3 py-1 border border-white/15">LLM CONTENT</span>
-                  <ArrowRight className="h-3 w-3 text-gold-400" />
-                  <span className="rounded-full bg-white/10 px-3 py-1 border border-white/15">VECTOR INDEX</span>
-                  <ArrowRight className="h-3 w-3 text-gold-400" />
-                  <span className="rounded-full bg-purple-400 text-ink font-black px-3.5 py-1">AI CITATION SHARE</span>
+                <div className="flex flex-wrap items-center justify-center gap-2 mb-6 font-mono text-[11px] font-bold text-blue-900">
+                  <span className="rounded-full bg-white/90 px-3 py-1 border border-blue-900/15 shadow-2xs">ENTITY</span>
+                  <ArrowRight className="h-3 w-3 text-gold-600" />
+                  <span className="rounded-full bg-white/90 px-3 py-1 border border-blue-900/15 shadow-2xs">SCHEMA</span>
+                  <ArrowRight className="h-3 w-3 text-gold-600" />
+                  <span className="rounded-full bg-white/90 px-3 py-1 border border-blue-900/15 shadow-2xs">LLM CONTENT</span>
+                  <ArrowRight className="h-3 w-3 text-gold-600" />
+                  <span className="rounded-full bg-white/90 px-3 py-1 border border-blue-900/15 shadow-2xs">VECTOR INDEX</span>
+                  <ArrowRight className="h-3 w-3 text-gold-600" />
+                  <span className="rounded-full bg-blue-900 text-white font-black px-3.5 py-1 shadow-2xs">AI CITATION SHARE</span>
                 </div>
 
-                <div className="inline-flex items-center gap-2 rounded-full border border-purple-400/40 bg-purple-400/10 px-4 py-1.5 text-xs font-black text-purple-300 shadow-2xs backdrop-blur-md">
-                  <Sparkles className="h-4 w-4 text-purple-400" />
+                <div className="inline-flex items-center gap-2 rounded-full border border-blue-900/20 bg-blue-50/80 px-4 py-1.5 text-xs font-black text-blue-900 shadow-2xs backdrop-blur-md">
+                  <Sparkles className="h-4 w-4 text-blue-600" />
                   <span>Generative Payoff</span>
                 </div>
 
                 <h2
                   id="aeo-cta-heading"
-                  className="mx-auto mt-5 max-w-2xl text-3xl font-black tracking-tight text-white sm:text-4xl text-balance leading-tight"
+                  className="mx-auto mt-5 max-w-2xl text-3xl font-black tracking-tight text-ink sm:text-4xl text-balance leading-tight"
                 >
                   {aeoGeoCta.heading}
                 </h2>
 
-                <p className="mx-auto mt-4 max-w-xl text-sm sm:text-base font-medium leading-relaxed text-white/80 text-balance">
+                <p className="mx-auto mt-4 max-w-xl text-sm sm:text-base font-medium leading-relaxed text-muted text-balance">
                   {aeoGeoCta.description}
                 </p>
 
                 <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                   <Button
                     href={aeoGeoCta.primaryCta.href}
-                    className="px-9 py-4 text-base font-extrabold shadow-xl shadow-purple-600/20 transition-transform duration-200 hover:scale-105"
+                    className="px-9 py-4 text-base font-extrabold shadow-xl shadow-blue-600/20 transition-transform duration-200 hover:scale-105"
                   >
                     {aeoGeoCta.primaryCta.label}
                   </Button>
                   <Button
                     href={aeoGeoCta.secondaryCta.href}
                     variant="secondary"
-                    className="px-9 py-4 text-base font-extrabold bg-white text-ink hover:bg-slate-100"
+                    className="px-9 py-4 text-base font-extrabold bg-white text-ink hover:bg-slate-50 border border-blue-900/15"
                   >
                     {aeoGeoCta.secondaryCta.label}
                   </Button>
                 </div>
               </div>
 
-              <div className="pointer-events-none absolute inset-x-10 bottom-0 h-1 bg-gradient-to-r from-transparent via-purple-400 to-transparent" />
+              <div className="pointer-events-none absolute inset-x-10 bottom-0 h-1 bg-gradient-to-r from-transparent via-blue-600 to-transparent" />
             </div>
           </TiltCard>
         </Reveal>

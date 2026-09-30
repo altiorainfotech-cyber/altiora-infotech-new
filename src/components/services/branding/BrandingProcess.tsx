@@ -41,11 +41,11 @@ export function BrandingProcess() {
           </Reveal>
         </div>
 
-        <div className="mt-14 rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900 via-blue-950 to-ink p-6 sm:p-12 text-white shadow-2xl relative overflow-hidden">
+        <div className="mt-14 rounded-3xl border border-blue-900/15 bg-gradient-to-br from-white/95 via-surface/90 to-blue-50/40 p-6 sm:p-12 text-ink shadow-2xl relative overflow-hidden backdrop-blur-2xl">
           <div className="relative mb-8 hidden lg:block">
-            <div className="h-1.5 w-full rounded-full bg-white/10" />
+            <div className="h-1.5 w-full rounded-full bg-blue-900/10" />
             <motion.div
-              className="absolute top-0 left-0 h-1.5 rounded-full bg-gradient-to-r from-blue-600 via-indigo-500 to-gold-400 shadow-[0_0_15px_rgba(59,130,246,0.6)]"
+              className="absolute top-0 left-0 h-1.5 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-gold-500 shadow-[0_0_15px_rgba(59,130,246,0.4)]"
               style={{ width: useTransform(progress, [0, 0.8], ["0%", "100%"]) }}
             />
           </div>
@@ -58,7 +58,7 @@ export function BrandingProcess() {
               return (
                 <motion.div
                   key={step.number}
-                  className="relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md transition-all duration-300 hover:border-gold-400/50"
+                  className="relative flex flex-col justify-between rounded-2xl border border-blue-900/10 bg-white/80 p-5 backdrop-blur-md shadow-sm transition-all duration-300 hover:border-blue-500/50 hover:shadow-md"
                   style={{
                     opacity: useTransform(progress, [Math.max(0, threshold - 0.1), threshold], [0.35, 1]),
                     scale: useTransform(progress, [Math.max(0, threshold - 0.1), threshold], [0.93, 1]),
@@ -66,18 +66,18 @@ export function BrandingProcess() {
                 >
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className="font-mono text-xs font-black text-gold-400">{step.number}</span>
-                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-950 text-gold-400 border border-white/20">
+                      <span className="font-mono text-xs font-black text-blue-800">{step.number}</span>
+                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-900 text-white shadow-sm border border-blue-800">
                         <Icon className="h-4.5 w-4.5" />
                       </div>
                     </div>
-                    <h3 className="mt-4 text-base font-black text-white leading-tight">{step.title}</h3>
-                    <p className="mt-2 text-xs leading-relaxed text-white/70 font-medium">{step.description}</p>
+                    <h3 className="mt-4 text-base font-black text-ink leading-tight">{step.title}</h3>
+                    <p className="mt-2 text-xs leading-relaxed text-muted font-medium">{step.description}</p>
                   </div>
 
-                  <div className="mt-4 h-1 w-full rounded-full bg-white/10 overflow-hidden">
+                  <div className="mt-4 h-1 w-full rounded-full bg-slate-200 overflow-hidden">
                     <motion.div
-                      className="h-full bg-gold-400"
+                      className="h-full bg-blue-600"
                       style={{
                         width: useTransform(progress, [threshold - 0.08, threshold], ["0%", "100%"]),
                       }}
@@ -88,13 +88,13 @@ export function BrandingProcess() {
             })}
           </div>
 
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-between border-t border-white/10 pt-6 text-xs font-mono font-bold text-white/70 gap-4">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-between border-t border-blue-900/10 pt-6 text-xs font-mono font-bold text-slate-700 gap-4">
             <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-gold-400 animate-ping" />
+              <span className="h-2 w-2 rounded-full bg-blue-600 animate-ping" />
               <span>STAGE 06 (LAUNCH & IMPLEMENTATION) LOOPS EQUITY BACK TO STAGE 01 (DISCOVERY & AUDIT)</span>
             </div>
-            <div className="flex items-center gap-2 text-gold-400 bg-gold-400/10 px-3 py-1.5 rounded-full border border-gold-400/30">
-              <RefreshCw className="h-4 w-4 animate-spin" style={{ animationDuration: "10s" }} />
+            <div className="flex items-center gap-2 text-amber-900 bg-amber-50 px-3 py-1.5 rounded-full border border-amber-300/60 shadow-2xs">
+              <RefreshCw className="h-4 w-4 text-amber-700 animate-spin" style={{ animationDuration: "10s" }} />
               <span>INFINITE BRAND FLYWHEEL</span>
             </div>
           </div>

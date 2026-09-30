@@ -39,7 +39,7 @@ export function WebDevPerformanceTracking() {
       step += 0.03;
       ctx.clearRect(0, 0, width, height);
 
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.05)";
+      ctx.strokeStyle = "rgba(28, 79, 161, 0.08)";
       ctx.lineWidth = 1;
       const gridSpacing = 40;
       for (let x = 0; x < width; x += gridSpacing) {
@@ -68,7 +68,7 @@ export function WebDevPerformanceTracking() {
 
       const currentColor = METRICS[activeMetric].color;
       const gradient = ctx.createLinearGradient(0, 0, 0, height);
-      gradient.addColorStop(0, currentColor + "40");
+      gradient.addColorStop(0, currentColor + "35");
       gradient.addColorStop(1, currentColor + "00");
 
       ctx.beginPath();
@@ -100,7 +100,7 @@ export function WebDevPerformanceTracking() {
       ctx.strokeStyle = currentColor;
       ctx.lineWidth = 3;
       ctx.shadowColor = currentColor;
-      ctx.shadowBlur = 12;
+      ctx.shadowBlur = 8;
       ctx.stroke();
       ctx.shadowBlur = 0;
 
@@ -112,7 +112,7 @@ export function WebDevPerformanceTracking() {
         ctx.fillStyle = "#ffffff";
         ctx.fill();
         ctx.strokeStyle = currentColor;
-        ctx.lineWidth = 2;
+        ctx.lineWidth = 2.5;
         ctx.stroke();
       }
 
@@ -128,17 +128,17 @@ export function WebDevPerformanceTracking() {
   }, [activeMetric]);
 
   return (
-    <div className="relative rounded-3xl border border-ink/8 bg-gradient-to-br from-slate-900 via-blue-950 to-ink p-6 sm:p-8 text-white shadow-2xl overflow-hidden mt-8">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-white/10">
+    <div className="relative rounded-3xl border border-blue-900/15 bg-gradient-to-br from-white/95 via-surface/90 to-blue-50/40 p-6 sm:p-8 text-ink shadow-2xl overflow-hidden mt-8 backdrop-blur-2xl">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-blue-900/10">
         <div>
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-400">Section 04</span>
-          <h3 className="text-xl sm:text-2xl font-black text-white mt-1 flex items-center gap-2">
-            <Activity className="h-5 w-5 text-blue-400 animate-pulse" />
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-800">Section 04</span>
+          <h3 className="text-xl sm:text-2xl font-black text-ink mt-1 flex items-center gap-2">
+            <Activity className="h-5 w-5 text-blue-600 animate-pulse" />
             Full-Stack Telemetry Sculpture
           </h3>
         </div>
-        <div className="flex items-center gap-2 font-mono text-xs font-bold text-blue-400 bg-blue-500/10 border border-blue-500/30 px-3 py-1 rounded-full">
-          <Zap className="h-3.5 w-3.5" />
+        <div className="flex items-center gap-2 font-mono text-xs font-bold text-blue-900 bg-blue-100/80 border border-blue-300 px-3 py-1 rounded-full shadow-2xs">
+          <Zap className="h-3.5 w-3.5 text-blue-600" />
           <span>LIVE WEB PERFORMANCE TELEMETRY</span>
         </div>
       </div>
@@ -150,14 +150,14 @@ export function WebDevPerformanceTracking() {
             onClick={() => setActiveMetric(idx)}
             className={`flex flex-col p-3 rounded-2xl border text-left transition-all duration-300 ${
               activeMetric === idx
-                ? "bg-white/15 border-blue-400/60 shadow-lg scale-102"
-                : "bg-white/5 border-white/10 hover:bg-white/10"
+                ? "bg-white border-blue-500 shadow-md scale-102 text-ink"
+                : "bg-white/60 border-blue-900/10 hover:bg-white text-ink/80"
             }`}
           >
-            <span className="text-[11px] font-mono font-medium text-white/60">{metric.label}</span>
+            <span className="text-[11px] font-mono font-medium text-muted">{metric.label}</span>
             <div className="flex items-center justify-between mt-1">
-              <span className="text-base font-black text-white">{metric.value}</span>
-              <span className="text-[10px] font-bold text-emerald-400 flex items-center">
+              <span className="text-base font-black text-ink">{metric.value}</span>
+              <span className="text-[10px] font-bold text-emerald-700 flex items-center">
                 {metric.trend}
                 <ArrowUpRight className="h-3 w-3" />
               </span>
@@ -166,10 +166,10 @@ export function WebDevPerformanceTracking() {
         ))}
       </div>
 
-      <div className="relative w-full rounded-2xl border border-white/10 bg-black/40 p-2 overflow-hidden">
+      <div className="relative w-full rounded-2xl border border-blue-900/15 bg-gradient-to-br from-white/95 via-blue-50/50 to-white/90 p-2 overflow-hidden shadow-inner">
         <canvas ref={canvasRef} className="w-full h-[240px] block" />
-        <div className="absolute top-4 right-4 flex items-center gap-2 text-[10px] font-mono text-white/50 bg-black/60 px-2.5 py-1 rounded-md backdrop-blur-md">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
+        <div className="absolute top-4 right-4 flex items-center gap-2 text-[10px] font-mono text-blue-900 bg-blue-50/90 px-2.5 py-1 rounded-md backdrop-blur-md border border-blue-900/15">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-ping" />
           <span>Runtime PageSpeed Telemetry</span>
         </div>
       </div>

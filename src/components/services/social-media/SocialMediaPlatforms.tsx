@@ -118,11 +118,11 @@ export function SocialMediaPlatforms() {
               {/* Left Column: Platform Details */}
               <div className="lg:col-span-6 space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="flex h-16 w-16 items-center justify-center shrink-0 rounded-2xl border border-blue-500/20 bg-gradient-to-br from-blue-900 via-blue-950 to-ink text-gold-400 shadow-md">
-                    <Icon className="h-8 w-8 text-gold-400" />
+                  <div className="flex h-16 w-16 items-center justify-center shrink-0 rounded-2xl border border-blue-200 bg-blue-900 text-white shadow-md">
+                    <Icon className="h-8 w-8 text-white" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-gold-600">
+                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-blue-800">
                       {currentPlatform.tag}
                     </span>
                     <h3 className="text-2xl font-black text-ink">{currentPlatform.name}</h3>
@@ -147,31 +147,31 @@ export function SocialMediaPlatforms() {
               </div>
 
               {/* Right Column: Visual Pipeline Environment */}
-              <div className="lg:col-span-6 rounded-2xl border border-blue-900/20 bg-gradient-to-br from-slate-900 via-blue-950 to-ink p-6 text-white shadow-xl">
-                <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-5">
-                  <span className="text-xs font-mono font-bold uppercase text-gold-400">Social Engine Strategy Pipeline</span>
-                  <Sparkles className="h-4 w-4 text-gold-400 animate-pulse" />
+              <div className="lg:col-span-6 rounded-2xl border border-blue-900/15 bg-gradient-to-br from-white/95 via-surface/90 to-blue-50/40 p-6 text-ink shadow-xl backdrop-blur-2xl">
+                <div className="flex items-center justify-between border-b border-blue-900/10 pb-3 mb-5">
+                  <span className="text-xs font-mono font-bold uppercase text-blue-800">Social Engine Strategy Pipeline</span>
+                  <Sparkles className="h-4 w-4 text-blue-600 animate-pulse" />
                 </div>
 
                 <div className="space-y-4">
                   {currentPlatform.pipeline.map((step, idx) => (
                     <div key={step} className="flex items-center gap-3">
-                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gold-400/20 text-gold-400 font-mono text-xs font-bold border border-gold-400/40">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-900 font-mono text-xs font-bold border border-blue-300">
                         0{idx + 1}
                       </div>
-                      <div className="flex-1 rounded-xl bg-white/10 p-3 border border-white/10 flex items-center justify-between">
-                        <span className="text-sm font-extrabold text-white">{step}</span>
+                      <div className="flex-1 rounded-xl bg-white p-3 border border-blue-900/10 flex items-center justify-between shadow-2xs">
+                        <span className="text-sm font-extrabold text-ink">{step}</span>
                         {idx < currentPlatform.pipeline.length - 1 && (
-                          <ArrowRight className="h-4 w-4 text-gold-400" />
+                          <ArrowRight className="h-4 w-4 text-gold-600" />
                         )}
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-6 flex items-center justify-between text-[11px] font-mono text-white/60 border-t border-white/10 pt-3">
+                <div className="mt-6 flex items-center justify-between text-[11px] font-mono text-slate-600 border-t border-blue-900/10 pt-3">
                   <span>Growth Pipeline: Active</span>
-                  <span className="text-emerald-400 font-bold">100% Brand Aligned</span>
+                  <span className="text-emerald-700 font-bold">100% Brand Aligned</span>
                 </div>
               </div>
             </motion.div>

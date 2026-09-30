@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Manrope, Bricolage_Grotesque } from "next/font/google";
 import { HomeHeader } from "@/components/homepage/HomeHeader";
 import { HomeFooter } from "@/components/homepage/HomeFooter";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
@@ -9,6 +9,12 @@ const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
+});
+
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -52,7 +58,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${manrope.variable} h-full antialiased`}>
+    <html lang="en" className={`${manrope.variable} ${bricolage.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-white text-ink">
         <HomeHeader />
         <main className="flex-1">{children}</main>
