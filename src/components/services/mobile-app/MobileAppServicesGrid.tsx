@@ -52,26 +52,26 @@ export function MobileAppServicesGrid() {
           </Reveal>
         </div>
 
-        <div className="mt-12 rounded-3xl border border-ink/10 bg-gradient-to-br from-slate-900 via-blue-950 to-ink p-6 sm:p-12 text-white shadow-2xl relative overflow-hidden">
+        <div className="mt-12 rounded-3xl border border-blue-900/15 bg-gradient-to-br from-white/95 via-surface/90 to-blue-50/40 p-6 sm:p-12 text-ink shadow-2xl relative overflow-hidden backdrop-blur-2xl">
           <div
-            className="pointer-events-none absolute inset-0 opacity-15"
+            className="pointer-events-none absolute inset-0 opacity-20"
             style={{
               backgroundImage:
-                "linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)",
+                "linear-gradient(to right, rgba(28,79,161,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(28,79,161,0.08) 1px, transparent 1px)",
               backgroundSize: "32px 32px",
             }}
           />
 
           <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4 max-w-xl mx-auto mb-10 text-center sm:text-left">
             <div>
-              <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-400">Interactive App Engine</span>
-              <h3 className="text-xl sm:text-3xl font-black text-white mt-1">Continuous App Optimization</h3>
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-blue-800">Interactive App Engine</span>
+              <h3 className="text-xl sm:text-3xl font-black text-ink mt-1">Continuous App Optimization</h3>
             </div>
             <button
               onClick={() => setIsPaused(!isPaused)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-blue-400/40 bg-blue-400/10 text-xs font-mono font-bold text-blue-300 hover:bg-blue-400/20 transition-colors"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-blue-300 bg-blue-50 text-xs font-mono font-bold text-blue-900 hover:bg-blue-100 transition-colors shadow-2xs"
             >
-              {isPaused ? <Play className="h-3 w-3" /> : <Pause className="h-3 w-3" />}
+              {isPaused ? <Play className="h-3 w-3" /> : <Pause className="h-3 w-3 text-gold-600" />}
               <span>{isPaused ? "RESUME AUTOPLAY" : "AUTOPLAYING"}</span>
             </button>
           </div>
@@ -81,7 +81,7 @@ export function MobileAppServicesGrid() {
               <svg className="w-full h-full overflow-visible" viewBox="0 0 440 440">
                 <defs>
                   <linearGradient id="appLoopGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#2563eb" />
+                    <stop offset="0%" stopColor="#1c4fa1" />
                     <stop offset="50%" stopColor="#d3ac3c" />
                     <stop offset="100%" stopColor="#10b981" />
                   </linearGradient>
@@ -104,7 +104,7 @@ export function MobileAppServicesGrid() {
                   transition={{ repeat: Infinity, duration: 35, ease: "linear" }}
                   style={{ transformOrigin: "220px 220px" }}
                 >
-                  <circle cx="220" cy="220" r="150" fill="none" stroke="rgba(255, 255, 255, 0.2)" strokeWidth="3" strokeDasharray="6 6" />
+                  <circle cx="220" cy="220" r="150" fill="none" stroke="rgba(28, 79, 161, 0.15)" strokeWidth="3" strokeDasharray="6 6" />
 
                   {mobileAppServices.map((service, i) => {
                     const angle = (i / mobileAppServices.length) * Math.PI * 2 - Math.PI / 2;
@@ -121,17 +121,17 @@ export function MobileAppServicesGrid() {
                           y1="220"
                           x2={nx}
                           y2={ny}
-                          stroke={isActive ? "url(#appLoopGrad)" : "rgba(255, 255, 255, 0.2)"}
+                          stroke={isActive ? "url(#appLoopGrad)" : "rgba(20, 21, 26, 0.12)"}
                           strokeWidth={isActive ? "3.5" : "1.5"}
                         />
 
                         <g transform={`translate(${nx}, ${ny})`}>
                           <circle
                             r={isActive ? "28" : "21"}
-                            fill={isActive ? "#d3ac3c" : "#1c4fa1"}
-                            stroke={isActive ? "#ffffff" : "rgba(255, 255, 255, 0.5)"}
+                            fill={isActive ? "#d3ac3c" : "#ffffff"}
+                            stroke={isActive ? "#1c4fa1" : "rgba(20, 21, 26, 0.2)"}
                             strokeWidth="3"
-                            className="transition-all duration-300 shadow-xl"
+                            className="transition-all duration-300 shadow-lg"
                           />
                           <foreignObject
                             x={isActive ? "-16" : "-12"}
@@ -145,7 +145,7 @@ export function MobileAppServicesGrid() {
                               style={{ transformOrigin: "center" }}
                               className="flex items-center justify-center h-full"
                             >
-                              <ServiceIcon className={`h-4 w-4 ${isActive ? "text-ink font-black" : "text-white"}`} />
+                              <ServiceIcon className={`h-4 w-4 ${isActive ? "text-ink font-black" : "text-blue-900"}`} />
                             </motion.div>
                           </foreignObject>
                         </g>
@@ -157,18 +157,18 @@ export function MobileAppServicesGrid() {
             </div>
 
             <div className="lg:col-span-5 space-y-4">
-              <div className="rounded-2xl border border-white/10 bg-white/10 p-6 backdrop-blur-md">
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-400">
+              <div className="rounded-2xl border border-blue-900/15 bg-white p-6 shadow-xl">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-800">
                   0{activeNode + 1} Discipline
                 </span>
-                <h4 className="text-xl font-black text-white mt-1">
+                <h4 className="text-xl font-black text-ink mt-1">
                   {mobileAppServices[activeNode].title}
                 </h4>
-                <p className="mt-2 text-sm leading-relaxed text-white/80 font-medium">
+                <p className="mt-2 text-sm leading-relaxed text-muted font-medium">
                   {mobileAppServices[activeNode].description}
                 </p>
-                <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-blue-400/20 border border-blue-400/40 px-3 py-1 text-xs font-bold text-blue-300">
-                  <Sparkles className="h-3.5 w-3.5" />
+                <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-blue-50 border border-blue-200 px-3 py-1 text-xs font-extrabold text-blue-900">
+                  <Sparkles className="h-3.5 w-3.5 text-blue-600" />
                   <span>{mobileAppServices[activeNode].metric}</span>
                 </div>
               </div>
@@ -180,8 +180,8 @@ export function MobileAppServicesGrid() {
                     onClick={() => { setActiveNode(idx); setIsPaused(true); }}
                     className={`p-2.5 rounded-xl text-left border text-xs font-bold transition-all ${
                       activeNode === idx
-                        ? "bg-gold-400 text-ink border-gold-400 shadow-md scale-102"
-                        : "bg-white/5 text-white/80 border-white/10 hover:bg-white/10"
+                        ? "bg-blue-900 text-white border-blue-900 shadow-md scale-102"
+                        : "bg-white text-ink/80 border-blue-900/10 hover:bg-slate-50"
                     }`}
                   >
                     0{idx + 1} {serv.title}

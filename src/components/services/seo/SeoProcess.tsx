@@ -41,11 +41,11 @@ export function SeoProcess() {
           </Reveal>
         </div>
 
-        <div className="mt-14 rounded-3xl border border-ink/10 bg-gradient-to-br from-slate-900 via-blue-950 to-ink p-6 sm:p-12 text-white shadow-2xl relative overflow-hidden">
+        <div className="mt-14 rounded-3xl border border-blue-900/15 bg-gradient-to-br from-white/95 via-surface/90 to-blue-50/40 p-6 sm:p-12 text-ink shadow-2xl relative overflow-hidden backdrop-blur-2xl">
           <div className="relative mb-8 hidden lg:block">
-            <div className="h-1.5 w-full rounded-full bg-white/10" />
+            <div className="h-1.5 w-full rounded-full bg-blue-900/10" />
             <motion.div
-              className="absolute top-0 left-0 h-1.5 rounded-full bg-gradient-to-r from-blue-500 via-gold-400 to-indigo-500 shadow-[0_0_15px_rgba(59,130,246,0.6)]"
+              className="absolute top-0 left-0 h-1.5 rounded-full bg-gradient-to-r from-blue-600 via-gold-400 to-indigo-600 shadow-[0_0_15px_rgba(37,99,235,0.6)]"
               style={{ width: useTransform(progress, [0, 0.8], ["0%", "100%"]) }}
             />
           </div>

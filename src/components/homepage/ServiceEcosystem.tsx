@@ -32,86 +32,111 @@ export function ServiceEcosystem() {
   const selectedData = ECOSYSTEM_NODES.find((n) => n.id === activeNode) || ECOSYSTEM_NODES[0];
 
   return (
-    <section className="relative overflow-hidden bg-transparent py-16 sm:py-20 lg:py-24" aria-labelledby="ecosystem-heading">
+    <section className="relative overflow-hidden bg-transparent py-20 sm:py-24" aria-labelledby="ecosystem-heading">
       <Container>
         <SectionHeading
           headingId="ecosystem-heading"
           align="center"
-          eyebrow="Service Ecosystem"
+          eyebrow="Integrated Service Topology"
           title={ecosystem.heading}
           description={ecosystem.description}
           className="mx-auto max-w-2xl"
           tone="light"
         />
 
-        <Reveal className="mx-auto mt-12 max-w-4xl">
-          {/* Interactive 3D Sculpture Network Hub */}
-          <div className="relative rounded-3xl border border-ink/10 bg-gradient-to-b from-white/90 via-slate-50/80 to-blue-50/40 p-8 sm:p-12 backdrop-blur-2xl shadow-2xl overflow-hidden">
+        <Reveal className="mx-auto mt-14 max-w-5xl">
+          {/* Interactive Digital Network Hub */}
+          <div className="relative rounded-3xl border border-blue-900/15 bg-gradient-to-b from-white/95 via-surface/90 to-blue-50/40 p-8 sm:p-12 backdrop-blur-2xl shadow-2xl overflow-hidden">
             {/* Ambient Background Radial */}
-            <div className="pointer-events-none absolute -top-32 -right-32 h-80 w-80 rounded-full bg-blue-500/10 blur-[100px]" />
-            <div className="pointer-events-none absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-gold-500/10 blur-[100px]" />
+            <div className="pointer-events-none absolute -top-40 -right-40 h-96 w-96 rounded-full bg-blue-600/10 blur-[120px]" />
+            <div className="pointer-events-none absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-gold-500/10 blur-[120px]" />
 
-            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-3">
-              {/* Central Active Node Telemetry Card */}
-              <div className="lg:col-span-1 rounded-2xl border border-blue-500/30 bg-white/90 p-6 shadow-md backdrop-blur-md">
-                <div className="flex items-center gap-2 text-xs font-mono font-bold text-blue-600">
-                  <Activity className="h-4 w-4 text-gold-500 animate-pulse" />
-                  <span>ACTIVE NODE TELEMETRY</span>
-                </div>
-                <h3 className="mt-3 text-lg font-black text-ink">{selectedData.label}</h3>
-                <p className="mt-2 text-xs leading-relaxed text-muted">{selectedData.desc}</p>
+            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
+              {/* Central Active Node Telemetry Card (Left) */}
+              <div className="lg:col-span-5 rounded-3xl border border-blue-900/20 bg-gradient-to-br from-ink via-blue-950 to-blue-900 p-6 sm:p-8 text-white shadow-2xl relative overflow-hidden">
+                <div className="pointer-events-none absolute -top-20 -right-20 h-48 w-48 rounded-full bg-gold-400/15 blur-2xl" />
 
-                <div className="mt-6 border-t border-ink/10 pt-4">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-muted">Illuminated Connections:</span>
-                  <div className="mt-2 flex flex-wrap gap-1.5">
-                    {selectedData.connections.map((connId) => {
-                      const connNode = ECOSYSTEM_NODES.find((n) => n.id === connId);
-                      return (
-                        <span key={connId} className="rounded-md border border-blue-400/30 bg-blue-50 px-2.5 py-1 text-[11px] font-bold text-blue-700">
-                          {connNode?.label}
-                        </span>
-                      );
-                    })}
+                <div className="relative z-10 space-y-5">
+                  <div className="flex items-center justify-between pb-3 border-b border-white/10">
+                    <div className="flex items-center gap-2 text-xs font-mono font-bold text-gold-300">
+                      <Activity className="h-4 w-4 text-gold-400 animate-pulse" />
+                      <span>NODE TELEMETRY METRICS</span>
+                    </div>
+                    <span className="text-[10px] font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded border border-emerald-400/20">
+                      LIVE BEAM
+                    </span>
+                  </div>
+
+                  <div>
+                    <span className="text-[10px] font-black uppercase tracking-widest text-blue-300">
+                      SELECTED SERVICE NODE
+                    </span>
+                    <h3 className="mt-1 text-2xl font-black text-white">{selectedData.label}</h3>
+                    <p className="mt-2 text-xs leading-relaxed text-blue-100/80 font-medium">
+                      {selectedData.desc}
+                    </p>
+                  </div>
+
+                  <div className="pt-3 border-t border-white/10">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-gold-300">
+                      Illuminated System Interlinks ({selectedData.connections.length}):
+                    </span>
+                    <div className="mt-2.5 flex flex-wrap gap-2">
+                      {selectedData.connections.map((connId) => {
+                        const connNode = ECOSYSTEM_NODES.find((n) => n.id === connId);
+                        return (
+                          <span
+                            key={connId}
+                            className="rounded-lg border border-white/15 bg-white/10 px-3 py-1 text-xs font-bold text-white shadow-xs backdrop-blur-md"
+                          >
+                            {connNode?.label}
+                          </span>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Interactive Node Interactive Network (Digital Sculpture) */}
-              <div className="lg:col-span-2 relative min-h-[320px] flex items-center justify-center">
-                {/* Connecting SVG Circuit Network Lines */}
-                <svg className="absolute inset-0 h-full w-full pointer-events-none stroke-blue-500/30" strokeWidth="1.5" fill="none">
-                  <path d="M 180 160 L 60 60" className="animate-pulse" />
-                  <path d="M 180 160 L 300 60" />
-                  <path d="M 180 160 L 60 260" />
-                  <path d="M 180 160 L 300 260" />
-                  <path d="M 180 160 L 180 40" strokeDasharray="4 4" />
-                </svg>
-
-                <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 w-full">
+              {/* Interactive Node Grid Matrix (Right) */}
+              <div className="lg:col-span-7 relative min-h-[340px] flex items-center justify-center p-2">
+                <div className="grid grid-cols-2 gap-3.5 sm:grid-cols-3 w-full">
                   {ECOSYSTEM_NODES.map((node) => {
                     const isSelected = activeNode === node.id;
-                    const isConnected = activeNode ? ECOSYSTEM_NODES.find((n) => n.id === activeNode)?.connections.includes(node.id) : false;
+                    const isConnected = activeNode
+                      ? ECOSYSTEM_NODES.find((n) => n.id === activeNode)?.connections.includes(node.id)
+                      : false;
 
                     return (
                       <motion.button
                         key={node.id}
                         onMouseEnter={() => setActiveNode(node.id)}
                         onClick={() => setActiveNode(node.id)}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className={`group relative flex flex-col items-start rounded-2xl p-4 text-left transition-all duration-300 shadow-sm ${
+                        whileHover={{ scale: 1.04 }}
+                        whileTap={{ scale: 0.96 }}
+                        className={`group relative flex flex-col items-start justify-between rounded-2xl p-4 text-left transition-all duration-300 min-h-[110px] ${
                           isSelected
                             ? "border-2 border-gold-500 bg-ink text-white shadow-xl shadow-gold-500/20 ring-2 ring-gold-500/30"
                             : isConnected
-                            ? "border-2 border-blue-500/80 bg-blue-50 text-blue-900 opacity-100 shadow-md"
-                            : "border border-ink/10 bg-white/70 text-ink opacity-50 hover:opacity-100"
+                            ? "border-2 border-blue-500/80 bg-blue-50/90 text-blue-950 opacity-100 shadow-md"
+                            : "border border-blue-900/10 bg-white/80 text-ink opacity-60 hover:opacity-100 hover:border-blue-400/50"
                         }`}
                       >
                         <div className="flex w-full items-center justify-between">
-                          <Zap className={`h-4 w-4 ${isSelected ? "text-gold-400" : isConnected ? "text-blue-600" : "text-muted/40"}`} />
-                          {isSelected && <span className="h-2 w-2 rounded-full bg-gold-400 animate-ping" />}
+                          <div
+                            className={`flex h-8 w-8 items-center justify-center rounded-xl transition-colors ${
+                              isSelected
+                                ? "bg-gold-500 text-ink shadow-sm"
+                                : isConnected
+                                ? "bg-blue-600 text-white"
+                                : "bg-slate-100 text-slate-600 group-hover:bg-blue-100 group-hover:text-blue-700"
+                            }`}
+                          >
+                            <Zap className="h-4 w-4" />
+                          </div>
+                          {isSelected && <span className="h-2.5 w-2.5 rounded-full bg-gold-400 animate-ping" />}
                         </div>
-                        <span className="mt-3 text-xs font-bold leading-tight">{node.label}</span>
+                        <span className="mt-4 text-xs font-bold leading-snug">{node.label}</span>
                       </motion.button>
                     );
                   })}

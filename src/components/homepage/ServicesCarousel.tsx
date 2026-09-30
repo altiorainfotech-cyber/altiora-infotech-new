@@ -2,18 +2,11 @@
 
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Carousel } from "@/components/ui/Carousel";
 import { Reveal } from "@/components/ui/Reveal";
 import { ServiceCard } from "./ServiceCard";
 import { services } from "@/data/homepage";
 
 export function ServicesCarousel() {
-  const slides = services.map((service) => (
-    <div key={service.slug} className="h-full pr-4 sm:pr-5">
-      <ServiceCard service={service} />
-    </div>
-  ));
-
   return (
     <section className="relative overflow-hidden bg-transparent py-16 sm:py-20 lg:py-24" aria-labelledby="services-heading">
       <Container>
@@ -27,15 +20,22 @@ export function ServicesCarousel() {
           />
         </Reveal>
 
-        <div className="mt-12">
-          <Carousel
-            slides={slides}
-            ariaLabel="Core services"
-            options={{ align: "start", containScroll: "trimSnaps" }}
-            slideClassName="basis-[85%] sm:basis-[60%] md:basis-1/2 lg:basis-1/3"
-            showDots={false}
-            arrowTone="light"
-          />
+        {/* Asymmetric bento grid: the lead service gets a wider, taller tile
+            so the section reads as art-directed rather than a repeated card
+            template. */}
+        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((service, index) => {
+            const featured = index === 0;
+            return (
+              <Reveal
+                key={service.slug}
+                delay={(index % 6) * 0.06}
+                className={featured ? "sm:col-span-2" : ""}
+              >
+                <ServiceCard service={service} featured={featured} />
+              </Reveal>
+            );
+          })}
         </div>
       </Container>
     </section>

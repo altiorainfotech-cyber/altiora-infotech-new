@@ -3,6 +3,13 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
+/**
+ * Ambient homepage backdrop: a light, premium "data constellation" —
+ * transparent WebGL over the white page background, metallic blue/gold
+ * particles with a handful of pre-computed nearest-neighbor connections
+ * (no per-frame graph search), plus two slow counter-rotating telemetry
+ * rings. Restrained, light, mouse-parallaxed.
+ */
 export default function Background3DCanvas() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -11,228 +18,140 @@ export default function Background3DCanvas() {
     if (!container) return;
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isMobile = window.innerWidth < 768;
 
     let renderer: THREE.WebGLRenderer;
     try {
-      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
     } catch {
       return;
     }
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 0, 14);
+    const camera = new THREE.PerspectiveCamera(52, window.innerWidth / window.innerHeight, 0.1, 100);
+    camera.position.set(0, 0, 16);
 
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
 
-    // Studio Lighting setup for realistic metallic shine
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.8);
-    scene.add(ambientLight);
+    scene.add(new THREE.AmbientLight(0xffffff, 1.7));
+    const keyLight = new THREE.DirectionalLight(0x3d72c9, 2.0);
+    keyLight.position.set(8, 10, 10);
+    scene.add(keyLight);
+    const goldLight = new THREE.PointLight(0xd3ac3c, 3.2, 40);
+    goldLight.position.set(-8, -4, 6);
+    scene.add(goldLight);
 
-    const pointLightBlue = new THREE.PointLight(0x3d72c9, 5.0, 50);
-    pointLightBlue.position.set(10, 10, 10);
-    scene.add(pointLightBlue);
+    // Particle field
+    const COUNT = isMobile ? 140 : 300;
+    const positions = new Float32Array(COUNT * 3);
+    const colors = new Float32Array(COUNT * 3);
+    const cBlue = new THREE.Color("#1c4fa1");
+    const cBlueLight = new THREE.Color("#3d72c9");
+    const cGold = new THREE.Color("#d3ac3c");
+    const pts: THREE.Vector3[] = [];
 
-    const pointLightGold = new THREE.PointLight(0xd3ac3c, 4.5, 50);
-    pointLightGold.position.set(-10, -10, 10);
-    scene.add(pointLightGold);
-
-    // Ambient particle field (Data Stream Particles)
-    const particleCount = 380;
-    const particleGeometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(particleCount * 3);
-    const colors = new Float32Array(particleCount * 3);
-
-    const goldColor = new THREE.Color("#d3ac3c");
-    const blueColor = new THREE.Color("#3d72c9");
-    const slateColor = new THREE.Color("#94a3b8");
-
-    for (let i = 0; i < particleCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 45;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 45;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 45;
+    for (let i = 0; i < COUNT; i++) {
+      const v = new THREE.Vector3((Math.random() - 0.5) * 36, (Math.random() - 0.5) * 22, (Math.random() - 0.5) * 30 - 6);
+      pts.push(v);
+      positions[i * 3] = v.x;
+      positions[i * 3 + 1] = v.y;
+      positions[i * 3 + 2] = v.z;
 
       const mix = Math.random();
-      let col = slateColor;
-      if (mix < 0.5) col = blueColor;
-      else if (mix < 0.85) col = goldColor;
-
-      colors[i * 3] = col.r;
-      colors[i * 3 + 1] = col.g;
-      colors[i * 3 + 2] = col.b;
+      const c = mix < 0.5 ? cBlue : mix < 0.85 ? cBlueLight : cGold;
+      colors[i * 3] = c.r;
+      colors[i * 3 + 1] = c.g;
+      colors[i * 3 + 2] = c.b;
     }
 
-    particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-    particleGeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
-
-    const particleMaterial = new THREE.PointsMaterial({
-      size: 0.1,
-      vertexColors: true,
-      transparent: true,
-      opacity: 0.3,
-    });
-
-    const particles = new THREE.Points(particleGeometry, particleMaterial);
+    const particleGeo = new THREE.BufferGeometry();
+    particleGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    particleGeo.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+    const particleMat = new THREE.PointsMaterial({ size: 0.07, vertexColors: true, transparent: true, opacity: 0.4, sizeAttenuation: true });
+    const particles = new THREE.Points(particleGeo, particleMat);
     scene.add(particles);
 
-    // -------------------------------------------------------------
-    // ALTIORA 3D APEX GROWTH EMBLEM & GYROSCOPIC DATA RINGS
-    // -------------------------------------------------------------
-    const apexEngineGroup = new THREE.Group();
+    // Pre-computed constellation lines: connect nearby points once at setup.
+    const linePositions: number[] = [];
+    const MAX_LINKS = isMobile ? 32 : 70;
+    const LINK_RADIUS = 4.0;
+    let links = 0;
+    outer: for (let i = 0; i < pts.length && links < MAX_LINKS; i++) {
+      for (let j = i + 1; j < pts.length; j++) {
+        if (pts[i].distanceTo(pts[j]) < LINK_RADIUS) {
+          linePositions.push(pts[i].x, pts[i].y, pts[i].z, pts[j].x, pts[j].y, pts[j].z);
+          links++;
+          if (links >= MAX_LINKS) break outer;
+        }
+      }
+    }
+    const lineGeo = new THREE.BufferGeometry();
+    lineGeo.setAttribute("position", new THREE.BufferAttribute(new Float32Array(linePositions), 3));
+    const lineMat = new THREE.LineBasicMaterial({ color: 0x3d72c9, transparent: true, opacity: 0.12 });
+    const constellation = new THREE.LineSegments(lineGeo, lineMat);
+    scene.add(constellation);
 
-    // 1. Custom 3D Apex Arrowhead Delta Shape (Extruded Altiora Growth Logo Crest)
-    const apexShape = new THREE.Shape();
-    apexShape.moveTo(0, 2.8);
-    apexShape.lineTo(2.2, -2.0);
-    apexShape.lineTo(0, -0.9);
-    apexShape.lineTo(-2.2, -2.0);
-    apexShape.closePath();
-
-    // Inner Arrow Cutout
-    const innerHole = new THREE.Path();
-    innerHole.moveTo(0, 1.0);
-    innerHole.lineTo(0.75, -0.3);
-    innerHole.lineTo(0.25, -0.3);
-    innerHole.lineTo(0.25, -1.0);
-    innerHole.lineTo(-0.25, -1.0);
-    innerHole.lineTo(-0.25, -0.3);
-    innerHole.lineTo(-0.75, -0.3);
-    innerHole.closePath();
-    apexShape.holes.push(innerHole);
-
-    const extrudeSettings = {
-      depth: 0.5,
-      bevelEnabled: true,
-      bevelSegments: 5,
-      steps: 1,
-      bevelSize: 0.1,
-      bevelThickness: 0.1,
+    let mouseX = 0;
+    let mouseY = 0;
+    const handleMouseMove = (e: MouseEvent) => {
+      if (isMobile) return;
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
     };
-
-    const apexGeometry = new THREE.ExtrudeGeometry(apexShape, extrudeSettings);
-    apexGeometry.center();
-
-    // Metallic Royal Blue Body
-    const apexMat = new THREE.MeshStandardMaterial({
-      color: 0x163f85,
-      emissive: 0x0a1f42,
-      emissiveIntensity: 0.4,
-      metalness: 0.9,
-      roughness: 0.15,
-      transparent: true,
-      opacity: 0.88,
-      depthWrite: true,
-    });
-    const apexMesh = new THREE.Mesh(apexGeometry, apexMat);
-    apexEngineGroup.add(apexMesh);
-
-    // 2. Inner Golden Telemetry Ring
-    const innerRingGeo = new THREE.TorusGeometry(3.4, 0.035, 16, 100);
-    const innerRingMat = new THREE.MeshStandardMaterial({
-      color: 0xd3ac3c,
-      emissive: 0xc9a227,
-      emissiveIntensity: 0.7,
-      metalness: 0.95,
-      roughness: 0.1,
-      transparent: true,
-      opacity: 0.55,
-    });
-    const innerRing = new THREE.Mesh(innerRingGeo, innerRingMat);
-    innerRing.rotation.x = Math.PI / 2.3;
-    apexEngineGroup.add(innerRing);
-
-    // 3. Outer Blue Data Orbit Ring
-    const outerRingGeo = new THREE.TorusGeometry(4.4, 0.025, 16, 100);
-    const outerRingMat = new THREE.MeshStandardMaterial({
-      color: 0x3d72c9,
-      emissive: 0x163f85,
-      emissiveIntensity: 0.5,
-      metalness: 0.9,
-      roughness: 0.2,
-      transparent: true,
-      opacity: 0.4,
-    });
-    const outerRing = new THREE.Mesh(outerRingGeo, outerRingMat);
-    outerRing.rotation.y = Math.PI / 2.5;
-    apexEngineGroup.add(outerRing);
-
-    // Align gracefully to the Right Side
-    apexEngineGroup.position.set(4.2, 0, -2);
-    apexEngineGroup.scale.set(0.8, 0.8, 0.8);
-    scene.add(apexEngineGroup);
-
-    // Scroll tracking
-    let targetScrollY = 0;
-    let currentScrollY = 0;
-
-    const handleScroll = () => {
-      targetScrollY = window.scrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
 
     const handleResize = () => {
-      if (!container) return;
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      renderer.setSize(width, height);
-      camera.aspect = width / height;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      renderer.setSize(w, h);
+      camera.aspect = w / h;
       camera.updateProjectionMatrix();
-
-      if (width < 768) {
-        apexEngineGroup.position.set(0, -2.2, -4);
-        apexEngineGroup.scale.set(0.5, 0.5, 0.5);
-      } else {
-        apexEngineGroup.position.set(4.2, 0, -2);
-        apexEngineGroup.scale.set(0.8, 0.8, 0.8);
-      }
     };
-
     window.addEventListener("resize", handleResize);
-    handleResize();
 
     let animationFrameId: number;
+    const clock = new THREE.Clock();
 
     const animate = () => {
+      const t = clock.getElapsedTime();
+
       if (!prefersReducedMotion) {
-        currentScrollY += (targetScrollY - currentScrollY) * 0.05;
+        particles.rotation.y += 0.0003;
+        constellation.rotation.y += 0.0003;
 
-        particles.rotation.y += 0.0004;
+        // Fluid water wave particle motion
+        const posArr = particleGeo.attributes.position.array as Float32Array;
+        for (let i = 0; i < COUNT; i++) {
+          const idx = i * 3;
+          posArr[idx + 1] = pts[i].y + Math.sin(t * 1.4 + pts[i].x * 0.25 + pts[i].z * 0.15) * 0.45;
+        }
+        particleGeo.attributes.position.needsUpdate = true;
 
-        const maxScroll = Math.max(document.body.scrollHeight - window.innerHeight, 1);
-        const scrollProgress = Math.min(Math.max(currentScrollY / maxScroll, 0), 1);
+        if (!isMobile) {
+          camera.position.x += (mouseX * 1.4 - camera.position.x) * 0.025;
+          camera.position.y += (-mouseY * 0.9 - camera.position.y) * 0.025;
+          camera.lookAt(0, 0, -2);
+        }
 
-        // 360-Degree Gyroscopic Rotation synchronized with scroll
-        apexMesh.rotation.y = scrollProgress * Math.PI * 4 + Date.now() * 0.0004;
-        innerRing.rotation.z += 0.002;
-        outerRing.rotation.x += 0.0015;
-
-        // Smooth subtle vertical float tracking scroll depth
-        const floatY = Math.sin(scrollProgress * Math.PI * 3) * 0.7 - scrollProgress * 1.2;
-        apexEngineGroup.position.y = floatY;
+        goldLight.intensity = 2.8 + Math.sin(t * 0.6) * 0.6;
       }
 
       renderer.render(scene, camera);
       animationFrameId = requestAnimationFrame(animate);
     };
-
     animate();
 
     return () => {
-      if (animationFrameId) cancelAnimationFrame(animationFrameId);
-      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", handleResize);
 
-      particleGeometry.dispose();
-      particleMaterial.dispose();
-      apexGeometry.dispose();
-      apexMat.dispose();
-      innerRingGeo.dispose();
-      innerRingMat.dispose();
-      outerRingGeo.dispose();
-      outerRingMat.dispose();
+      particleGeo.dispose();
+      particleMat.dispose();
+      lineGeo.dispose();
+      lineMat.dispose();
       renderer.dispose();
 
       if (renderer.domElement.parentNode === container) {

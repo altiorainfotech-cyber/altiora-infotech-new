@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { Check, X, Shield, Sparkles, Scale } from "lucide-react";
@@ -49,19 +50,25 @@ const COMPARISON_DATA: ComparisonRow[] = [
 
 export function AgencyComparisonMatrix() {
   return (
-    <section className="relative py-16 sm:py-24 bg-surface/50 border-y border-ink/8 overflow-hidden">
+    <section className="relative py-16 sm:py-24 bg-transparent overflow-hidden">
+      {/* Background Radial Glow */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/10 blur-3xl opacity-60"
+        aria-hidden="true"
+      />
+
       <Container>
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-12">
           <Reveal>
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-white px-4 py-1.5 text-xs font-extrabold text-blue-800 shadow-xs">
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-white/90 px-4 py-1.5 text-xs font-black text-blue-800 shadow-xs backdrop-blur-md">
               <Scale className="h-3.5 w-3.5 text-blue-600" />
               <span>The Technological Edge</span>
             </div>
           </Reveal>
 
           <Reveal delay={0.05}>
-            <h2 className="mt-4 text-3xl sm:text-5xl font-black tracking-tight text-ink">
+            <h2 className="font-display mt-4 text-3xl sm:text-5xl font-bold tracking-tight text-ink">
               Traditional Agency vs.{" "}
               <span className="bg-gradient-to-r from-blue-700 via-blue-900 to-gold-600 bg-clip-text text-transparent">
                 Altiora Growth Engine
@@ -78,20 +85,24 @@ export function AgencyComparisonMatrix() {
 
         {/* Matrix Table Card */}
         <Reveal delay={0.15}>
-          <div className="overflow-hidden rounded-3xl border border-ink/10 bg-white shadow-xl">
+          <motion.div
+            animate={{ y: [-4, 4, -4] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="overflow-hidden rounded-3xl border border-blue-900/10 bg-gradient-to-b from-white/95 via-surface/90 to-blue-50/20 shadow-2xl backdrop-blur-2xl"
+          >
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="border-b border-ink/10 bg-surface">
+                  <tr className="border-b border-ink/10 bg-slate-50/80">
                     <th className="py-5 px-6 text-xs font-black uppercase tracking-wider text-muted w-1/3">
                       Core Capability
                     </th>
                     <th className="py-5 px-6 text-xs font-black uppercase tracking-wider text-muted/70 w-1/3">
                       Traditional Digital Agency
                     </th>
-                    <th className="py-5 px-6 text-xs font-black uppercase tracking-wider text-blue-800 w-1/3 bg-blue-50/60 border-l border-blue-200/50">
-                      <div className="flex items-center gap-1.5">
-                        <Sparkles className="h-4 w-4 text-gold-500 fill-gold-400" />
+                    <th className="py-5 px-6 text-xs font-black uppercase tracking-wider text-blue-900 w-1/3 bg-blue-100/40 border-l border-blue-200/60">
+                      <div className="flex items-center gap-2">
+                        <Sparkles className="h-4 w-4 text-gold-500 fill-gold-400 animate-pulse" />
                         <span>Altiora Growth Partner</span>
                       </div>
                     </th>
@@ -99,42 +110,46 @@ export function AgencyComparisonMatrix() {
                 </thead>
                 <tbody className="divide-y divide-ink/8 text-xs sm:text-sm font-medium">
                   {COMPARISON_DATA.map((row, idx) => (
-                    <tr
+                    <motion.tr
                       key={row.dimension}
-                      className={`transition-colors hover:bg-surface/60 ${
+                      initial={{ opacity: 0, y: 14 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-60px" }}
+                      transition={{ duration: 0.5, delay: idx * 0.07, ease: [0.16, 1, 0.3, 1] }}
+                      className={`transition-colors hover:bg-blue-50/40 ${
                         row.highlight ? "bg-blue-50/20" : ""
                       }`}
                     >
                       {/* Dimension */}
-                      <td className="py-4.5 px-6 font-extrabold text-ink">
+                      <td className="py-5 px-6 font-extrabold text-ink">
                         {row.dimension}
                       </td>
 
                       {/* Traditional */}
-                      <td className="py-4.5 px-6 text-muted">
-                        <div className="flex items-start gap-2">
-                          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-rose-50 text-rose-500 mt-0.5">
-                            <X className="h-3 w-3" />
+                      <td className="py-5 px-6 text-muted">
+                        <div className="flex items-start gap-2.5">
+                          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-rose-50 text-rose-500 mt-0.5 border border-rose-200">
+                            <X className="h-3 w-3 stroke-[2.5]" />
                           </span>
                           <span>{row.traditional}</span>
                         </div>
                       </td>
 
                       {/* Altiora Engine */}
-                      <td className="py-4.5 px-6 font-extrabold text-ink bg-blue-50/30 border-l border-blue-200/40">
-                        <div className="flex items-start gap-2 text-blue-950">
-                          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white mt-0.5 shadow-xs">
-                            <Check className="h-3.5 w-3.5" />
+                      <td className="py-5 px-6 font-extrabold text-ink bg-blue-50/30 border-l border-blue-200/50">
+                        <div className="flex items-start gap-2.5 text-blue-950">
+                          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white mt-0.5 shadow-sm">
+                            <Check className="h-3.5 w-3.5 stroke-[2.5]" />
                           </span>
                           <span>{row.altiora}</span>
                         </div>
                       </td>
-                    </tr>
+                    </motion.tr>
                   ))}
                 </tbody>
               </table>
             </div>
-          </div>
+          </motion.div>
         </Reveal>
       </Container>
     </section>

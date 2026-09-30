@@ -1,4 +1,5 @@
 import { ClientBackground } from "@/components/homepage/ClientBackground";
+import { FloatingIcons } from "@/components/homepage/FloatingIcons";
 import { HeroSlider } from "@/components/homepage/HeroSlider";
 import { QuickAnswer } from "@/components/homepage/QuickAnswer";
 import { GrowthMetrics } from "@/components/homepage/GrowthMetrics";
@@ -18,6 +19,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen bg-white text-ink">
       <ClientBackground />
+      <FloatingIcons />
       <div className="relative z-10">
         <HeroSlider />
         <GrowthMetrics />

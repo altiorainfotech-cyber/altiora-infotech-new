@@ -135,31 +135,31 @@ export function PaidAdsPlatforms() {
               </div>
 
               {/* Right Column: Original Visual Pipeline Environment */}
-              <div className="lg:col-span-6 rounded-2xl border border-blue-900/20 bg-gradient-to-br from-slate-900 via-blue-950 to-ink p-6 text-white shadow-xl">
-                <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-5">
-                  <span className="text-xs font-mono font-bold uppercase text-gold-400">Altiora Visual Pipeline</span>
-                  <Sparkles className="h-4 w-4 text-gold-400 animate-pulse" />
+              <div className="lg:col-span-6 rounded-2xl border border-blue-900/15 bg-gradient-to-br from-white/95 via-surface/90 to-blue-50/40 p-6 text-ink shadow-xl backdrop-blur-2xl">
+                <div className="flex items-center justify-between border-b border-blue-900/10 pb-3 mb-5">
+                  <span className="text-xs font-mono font-bold uppercase text-blue-800">Altiora Visual Pipeline</span>
+                  <Sparkles className="h-4 w-4 text-blue-600 animate-pulse" />
                 </div>
 
                 <div className="space-y-4">
                   {pipeline.steps.map((step, idx) => (
                     <div key={step} className="flex items-center gap-3">
-                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gold-400/20 text-gold-400 font-mono text-xs font-bold border border-gold-400/40">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-900 font-mono text-xs font-bold border border-blue-300">
                         0{idx + 1}
                       </div>
-                      <div className="flex-1 rounded-xl bg-white/10 p-3 border border-white/10 flex items-center justify-between">
-                        <span className="text-sm font-extrabold text-white">{step}</span>
+                      <div className="flex-1 rounded-xl bg-white p-3 border border-blue-900/10 flex items-center justify-between shadow-2xs">
+                        <span className="text-sm font-extrabold text-ink">{step}</span>
                         {idx < pipeline.steps.length - 1 && (
-                          <ArrowRight className="h-4 w-4 text-gold-400" />
+                          <ArrowRight className="h-4 w-4 text-gold-600" />
                         )}
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-6 flex items-center justify-between text-[11px] font-mono text-white/60 border-t border-white/10 pt-3">
+                <div className="mt-6 flex items-center justify-between text-[11px] font-mono text-slate-600 border-t border-blue-900/10 pt-3">
                   <span>Custom Engine: Configured</span>
-                  <span className="text-emerald-400 font-bold">100% Optimized</span>
+                  <span className="text-emerald-700 font-bold">100% Optimized</span>
                 </div>
               </div>
             </motion.div>
